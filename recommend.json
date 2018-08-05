@@ -1,0 +1,14 @@
+{
+    "http://www.baidu.com":{
+        "name":"百度",
+        "tags":["测试推荐1"]
+    },
+    "http://www.sina.com":{
+        "name":"新浪",
+        "tags":["测试推荐1","测试推荐2"]
+    },
+    "http://www.taobao.com":{
+        "name":"淘宝",
+        "tags":["测试推荐2","测试推荐3"]
+    }
+}

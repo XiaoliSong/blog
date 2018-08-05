@@ -1,0 +1,52 @@
+ul#tags_ul {
+  margin: 10px 5px;
+  list-style: none;
+}
+ul#tags_ul li {
+  display: inline-block;
+}
+ul#tags_ul li button {
+  background: #eee;
+  line-height: 1.4;
+  padding: 5px;
+  margin: 0 3px;
+  border: 1px solid #ddd;
+  outline: none;
+  border-radius: 8px;
+}
+ul#tags_ul li button:hover {
+  border: 1px solid #777;
+  cursor: pointer;
+}
+ul#tags_ul li button.active {
+  border: 1px solid #777;
+}
+ul#tag_contents_ul {
+  list-style: none;
+  margin-left: 5px;
+}
+ul#tag_contents_ul li {
+  display: none;
+}
+ul#tag_contents_ul li h2 {
+  font-size: 1.4em;
+}
+ul#tag_contents_ul li ul {
+  list-style: circle;
+  display: block;
+  margin-left: 5px;
+}
+ul#tag_contents_ul li ul li {
+  display: block;
+}
+ul#tag_contents_ul li ul li:before {
+  content: "●";
+  color: black;
+}
+ul#tag_contents_ul li ul li a {
+  cursor: pointer;
+}
+ul#tag_contents_ul li ul li span {
+  font-size: 0.7em;
+  color: #777;
+}

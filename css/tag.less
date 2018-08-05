@@ -1,0 +1,62 @@
+ul#tags_ul{
+    margin: 10px 5px;
+    list-style: none;
+
+    li{
+        display: inline-block;
+
+        button{
+            background:#eee;
+            line-height:1.4;
+            padding:5px;
+            margin:0 3px;
+            border:1px solid #ddd;
+            outline:none;
+            border-radius:8px;
+            &:hover{
+                border:1px solid #777;
+                cursor:pointer;
+            }
+            &.active{
+                border:1px solid #777;
+            }
+        }
+    }
+}
+
+
+ul#tag_contents_ul{
+    list-style: none;
+    margin-left: 5px;
+    li{
+        display: none;
+        h2{
+            font-size: 1.4em;
+        }
+        ul{
+            list-style: circle;
+            display: block;
+            margin-left: 5px;
+            li{
+                display: block;
+                //list-style不显示，所以加上before
+                &:before{
+                    content: "●";
+                    color: black;
+                }
+
+                a{
+                    cursor: pointer;
+                }
+
+                span{
+                    font-size: 0.7em;
+                    color: #777;
+                    font-style:italic;
+                }
+            }
+        }
+    }
+    
+} 
+
