@@ -15,13 +15,13 @@ def generate_post_preface(info):
     <article class='post'>
         <div class='post_meta'>
             <div class='post_meta_date'>%s</div>
-            <div class='post_commet_cnt'><a href="#SOHUCS"><span id="sourceId::%s" class="cy_cmt_count"></span><span> 评论</span></a></div>
+            <div class='post_commet_cnt'><a href="%s#SOHUCS"><span id="sourceId::%s" class="cy_cmt_count"></span><span> 评论</span></a></div>
         </div>
         <h1><a href="%s" title="%s">%s</a></h1>
         %s
     </article>
     '''
-    return html %(date,info['id'],info['link'],info['title'],info['title'],main)
+    return html %(date,info['link'],info['id'],info['link'],info['title'],info['title'],main)
 
 
 def generate_page(post_arr,index,has_former,has_next):
