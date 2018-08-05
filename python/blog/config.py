@@ -1,5 +1,7 @@
 from os import path
 
+ROOT_PATH=path.abspath(path.join(path.dirname(__file__), "../../"))
+
 CONF_PREFIX_PATH=path.abspath(path.join(path.dirname(__file__), "../../conf"))
 STATIC_MD_PREFIX_PATH=path.abspath(path.join(path.dirname(__file__), "../../"))
 POST_PREFIX_PAHT=path.abspath(path.join(path.dirname(__file__), "../../post"))

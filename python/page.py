@@ -3,7 +3,7 @@ import os
 import json
 
 from blog.helper import generate_main,generate_complete_html,md2html,generate_li
-from blog.config import POST_JSON_PATH,POST_CNT_PER_PAGE,POST_PREFACE_NAME,PAGE_PREFIX_PAHT,POST_PREFIX_PAHT,CONF_PREFIX_PATH
+from blog.config import POST_JSON_PATH,POST_CNT_PER_PAGE,POST_PREFACE_NAME,PAGE_PREFIX_PAHT,POST_PREFIX_PAHT,CONF_PREFIX_PATH,ROOT_PATH
 
 
 def generate_post_preface(info):
@@ -62,6 +62,16 @@ def generate_page(post_arr,index,has_former,has_next):
             html=generate_complete_html(page_conf,main_html)
             fd.write(html)
             print("生成page成功，页号：%d"%(index))
+        
+        # 生成首页
+        if index==0:
+            file_name=os.path.join(ROOT_PATH,'index.html')
+            with open(file_name,'w+',encoding='utf-8') as fd:
+                html=generate_complete_html(page_conf,main_html)
+                fd.write(html)
+                print("生成首页成功")
+        
+
 
 def generate_pages():
     with open(POST_JSON_PATH,'r',encoding='utf-8') as fd:
