@@ -191,7 +191,7 @@ footer {
     --mwidth: var(--sidebar_width);
   }
   #sidebar #profile {
-    margin-top: 30px;
+    margin-top: 25px;
   }
   #sidebar #profile a {
     width: 120px;
@@ -216,7 +216,7 @@ footer {
     --mwidth: var(--sidebar_width);
   }
   #sidebar #profile {
-    margin-top: 30px;
+    margin-top: 20px;
   }
   #sidebar #profile a {
     width: 50px;
@@ -225,8 +225,14 @@ footer {
   #sidebar #profile span {
     display: none;
   }
+  #sidebar #row_links {
+    margin-top: 15px;
+  }
   #sidebar #row_links a span {
     display: none;
+  }
+  #sidebar #col_links {
+    margin-top: 15px;
   }
   #main {
     padding-left: var(--sidebar_width);
@@ -245,11 +251,21 @@ footer {
     --mwidth: var(--sidebar_width);
   }
   #sidebar #profile {
-    margin-top: 30px;
+    margin-top: 15px;
   }
   #sidebar #profile a {
     width: 120px;
     height: 120px;
+  }
+  #sidebar #row_links {
+    margin-top: 10px;
+  }
+  #sidebar #row_links li {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+  #sidebar #col_links {
+    margin-top: 10px;
   }
   #main {
     padding-left: 0;
