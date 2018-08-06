@@ -17,7 +17,7 @@ def generate_tag_contents_ul(tag_posts_arr):
         for post in posts:
             date=post['datetime'][0:post['datetime'].index(' ')]
             sub_li_content='''
-            <a href="%s" title="%s">%s</a> <span>%s</span>
+            <a href="%s" title="%s">%s <span>%s</span></a>
             ''' %(post['link'],post['title'],post['title'],date)
             sub_li_arr.append(generate_li(sub_li_content))
 

@@ -8,47 +8,53 @@ from blog.helper import generate_li,generate_ul,generate_tag_ul
 
 
 # 根据tag内容数组生成ul
-def generate_tag_contents_ul(tag_contents):
+def generate_tag_contents_ul(tag_posts_arr):
     li_arr=[]
-    for tag,info_arr in tag_contents.items():
+    for tag_posts in tag_posts_arr:
         sub_li_arr=[]
-        for info in info_arr:
+        tag=tag_posts['name']
+        posts=tag_posts['posts']
+        for post in posts:
             sub_li_content='''
             <a href="%s" title="%s">%s</a>
-            ''' %(info['link'],info['name'],info['name'])
+            ''' %(post['link'],post['title'],post['title'])
             sub_li_arr.append(generate_li(sub_li_content))
 
         sub_ul=generate_ul(sub_li_arr)
-
         li_content='''
         <h2>%s</h2>
         %s
         ''' %(tag,sub_ul)
-        li_arr.append(generate_li(li_content))   
+        li_arr.append(generate_li(li_content)) 
     return generate_ul(li_arr,'tag_contents_ul')
 
 
 def generate_recommend_content_main(json_data):
-    tags=[]
-    tag_contents={}
-    for link,detail in json_data.items():
-        link_tags=detail['tags']
-        info={
-            'link':link,
-            'name':detail['name']
-        }
-        for link_tag in link_tags:
-            if link_tag not in tags:
-                tags.append(link_tag)
-            if link_tag not in tag_contents:
-                tag_contents[link_tag]=[info]
+    tag_arr=[]
+    tag_posts={}
+    for post in json_data['posts']:
+        for tag in post['tags']:
+            if tag not in tag_arr:
+                tag_arr.append(tag)
+            if tag not in tag_posts:
+                tag_posts[tag]=[post]
             else:
-                tag_contents[link_tag].append(info)
-    tag_counts={}
-    for tag in tags:
-        tag_counts[tag]=len(tag_contents[tag])
-    tag_ul_html=generate_tag_ul(tag_counts)
-    tag_contents_ul_html=generate_tag_contents_ul(tag_contents)
+                tag_posts[tag].append(post)
+
+    tag_info_arr=[]
+    tag_posts_arr=[]        
+    for tag in tag_arr:
+        tag_info_arr.append({
+            'name':tag,
+            'count':len(tag_posts[tag])
+        })
+        tag_posts_arr.append({
+            'name':tag,
+            'posts':tag_posts[tag]
+        })
+
+    tag_ul_html=generate_tag_ul(tag_info_arr)
+    tag_contents_ul_html=generate_tag_contents_ul(tag_posts_arr)
     return '''
     <h1>推荐</h1>
     %s

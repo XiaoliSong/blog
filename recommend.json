@@ -1,14 +1,19 @@
 {
-    "http://www.baidu.com":{
-        "name":"百度",
-        "tags":["测试推荐1"]
-    },
-    "http://www.sina.com":{
-        "name":"新浪",
-        "tags":["测试推荐1","测试推荐2"]
-    },
-    "http://www.taobao.com":{
-        "name":"淘宝",
-        "tags":["测试推荐2","测试推荐3"]
-    }
+	"posts":[
+		{
+			"link":"http://www.baidu.com",
+			"title":"百度",
+			"tags":["测试推荐1"]
+		},
+		{
+			"link":"http://www.sina.com",
+			"title":"新浪",
+			"tags":["测试推荐1","测试推荐2"]
+		},
+		{
+			"link":"http://www.taobao.com",
+			"title":"淘宝",
+			"tags":["测试推荐2","测试推荐3"]
+		}
+	]
 }
