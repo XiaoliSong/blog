@@ -50,11 +50,11 @@ certbot --authenticator webroot --installer nginx
 certbot certonly --authenticator standalone --pre-hook "nginx -s stop" --post-hook "nginx"
 ```
 
-中途可能需要填写域名和邮箱，最好可能提示无法配置nginx.conf，所以需要手动修改nginx的配置，记住证书位置
+中途可能需要填写域名和邮箱，最后可能提示无法配置nginx.conf，所以需要手动修改nginx的配置，记住证书位置
 
 ### 修改/etc/nginx/default.conf
 
-default.conf 需要修改的地方
+default.conf文件需要根据自身修改的地方
 * ssl证书位置
 * server_name
 
