@@ -12,6 +12,7 @@ function switch_sidebar(){
         sidebar.style.display="none";
         header.style.paddingLeft="0";
         main.style.paddingLeft="0";
+		main.style.width="100%"
         setTimeout(function(){
             switch_btn.style.backgroundImage=getComputedStyle(switch_btn).getPropertyValue("--open_bg");
         },300);
@@ -26,6 +27,9 @@ function switch_sidebar(){
         console.log('open_sidebar');
         sidebar.style.display="block";
         header.style.paddingLeft=getComputedStyle(sidebar).getPropertyValue("--mwidth");
+		let sidebar_width=getComputedStyle(sidebar).getPropertyValue("--mwidth");
+		sidebar_width=parseInt(sidebar_width.substr(0,sidebar_width.indexOf('px')));
+		main.style.width=(main.clientWidth+sidebar_width)+'px';
         main.style.paddingLeft=getComputedStyle(sidebar).getPropertyValue("--mwidth");
         setTimeout(function(){
             switch_btn.style.backgroundImage=getComputedStyle(switch_btn).getPropertyValue("--close_bg");

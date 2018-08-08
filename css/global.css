@@ -145,9 +145,6 @@ html {
   min-height: 80%;
   box-sizing: border-box;
 }
-#main #content {
-  box-sizing: border-box;
-}
 footer {
   text-align: center;
   margin: 50px 20px 30px 20px;
