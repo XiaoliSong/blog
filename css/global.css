@@ -272,3 +272,6 @@ footer {
     margin: 15px 10px;
   }
 }
+div.module-mobile-cmt-float-bar {
+  display: none;
+}
