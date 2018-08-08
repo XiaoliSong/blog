@@ -71,9 +71,8 @@ function switch_sidebar(){
 }
 
 
-function init(){
+(function (){
     let func=switch_sidebar();
     document.getElementById('switch_btn').addEventListener('click',func);
-}
+})();
 
-init();
