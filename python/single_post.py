@@ -52,7 +52,7 @@ def generate_single_post(post_link_name):
         md_file_name=path.join(dir_name,POST_MD_NAME)
         with open(md_file_name,'r',encoding='utf-8') as fd:
             text=md2html(fd.read())
-            t=get_dir_latest_file_mtime(dir_name)
+            t=get_dir_latest_file_mtime(dir_name,'index.html')
             date=time.strftime('%Y-%m-%d',time.localtime(t))
             main=generate_post_main(post_conf['title'],date,post_link_name,text,post_conf['tags'])
             html_file_name=path.join(dir_name,'index.html')

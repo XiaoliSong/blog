@@ -246,13 +246,18 @@ def generate_tag_ul(tag_info_arr):
     return generate_ul(li_arr,'tags_ul')
 
 
-def get_dir_latest_file_mtime(dir_name):
+def get_dir_latest_file_mtime(dir_name,*ignore_name_arr):
     max_time = 0
     for item in os.listdir(dir_name):
-        file_path=os.path.join(dir_name,item)
-        mtime=os.path.getmtime(file_path)
-        if mtime > max_time:
-            max_time=mtime
+        ignore=False
+        for ignore_name in ignore_name_arr:
+            if ignore_name==item:
+                ignore=True
+        if not ignore:
+            file_path=os.path.join(dir_name,item)
+            mtime=os.path.getmtime(file_path)
+            if mtime > max_time:
+                max_time=mtime
     return max_time
     
         

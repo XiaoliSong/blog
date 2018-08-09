@@ -16,7 +16,7 @@ def post_cmp_func(x,y):
         return 0
 
 
-def generate_tag_json():
+def generate_post_json():
     post_arr=[]
     for dir_name in os.listdir(POST_PREFIX_PAHT):
         path_dir_name=os.path.join(POST_PREFIX_PAHT,dir_name)
@@ -24,7 +24,7 @@ def generate_tag_json():
             conf_file_name=os.path.join(path_dir_name,POST_CONF_NAME)
             with open(conf_file_name,'r',encoding='utf-8') as fd:
                 post_conf=json.load(fd)
-                t=get_dir_latest_file_mtime(path_dir_name)
+                t=get_dir_latest_file_mtime(path_dir_name,'index.html')
                 datetime=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(t))
                 link="/post/"+dir_name+'/index.html'
                 post_arr.append({
@@ -46,5 +46,5 @@ def generate_tag_json():
     print('成功生成post_json文件：'+POST_JSON_PATH)
 
 if __name__=="__main__":
-    generate_tag_json()
+    generate_post_json()
 

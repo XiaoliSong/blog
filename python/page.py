@@ -91,6 +91,8 @@ def generate_pages():
                 has_next=False
             generate_page(posts[(cur_cnt-POST_CNT_PER_PAGE):cur_cnt],index,has_former,has_next)
             index+=1
+    print("生成全部page导航页面成功")
+
 
 if __name__=="__main__":
     generate_pages()
