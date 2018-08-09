@@ -1,6 +1,11 @@
 {
 	"posts":[
 		{
+			"link":"https://imququ.com/post/x-forwarded-for-header-in-http.html",
+			"title":"HTTP 请求头中的 X-Forwarded-For",
+			"tags":["HTTP"]
+		},
+		{
 			"link":"https://www.cnblogs.com/lyzg/p/6067766.html",
 			"title":"3种web会话管理的方式",
 			"tags":["架构"]
