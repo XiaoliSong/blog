@@ -56,7 +56,7 @@ def generate_archive_content_main(json_data):
     ''' %(tag_contents_ul_html)
 
 
-if __name__=="__main__":
+def generate_archive():
     name='archive'
     with open(path.join(POST_JSON_PATH),'r',encoding='utf-8') as fd:
         json_data=json.load(fd)
@@ -65,5 +65,8 @@ if __name__=="__main__":
             page_conf=json.load(fd)
             html=generate_complete_html(page_conf,main)
             with open(path.join(STATIC_MD_PREFIX_PATH,name+'.html'),'w+',encoding='utf-8') as fd:
-                print('生成成功，输出文件：'+path.join(STATIC_MD_PREFIX_PATH,name+'.html'))
+                print('生成归档archive.html成功，输出文件：'+path.join(STATIC_MD_PREFIX_PATH,name+'.html'))
                 fd.write(html)
+
+if __name__=="__main__":
+    generate_archive()

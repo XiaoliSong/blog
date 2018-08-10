@@ -2,7 +2,7 @@ import os
 from blog.config import POST_PREFIX_PAHT
 from single_post import generate_single_post
 from post_json import generate_post_json
-from recommend import generate_recommend
+from archive import generate_archive
 from tag import generate_tag
 from page import generate_pages
 
@@ -16,7 +16,7 @@ def generate_all_posts():
     print("生成全部帖子成功，共："+str(cnt)+"个")
     generate_post_json()
     generate_pages()
-    generate_recommend()
+    generate_archive()
     generate_tag()
 
 if __name__=="__main__":
