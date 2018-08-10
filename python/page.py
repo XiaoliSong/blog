@@ -43,11 +43,18 @@ def generate_page(post_arr,index,has_former,has_next):
         pagination_html=pagination_html+'''
         <a href="/page/%d.html" class="former_link"><-上一页</a>
         '''% (index-1)
-    
+    else:
+        pagination_html=pagination_html+'''
+        <a href="#" class="former_link" visibility="hiddern"></a>
+        '''
     if has_next:
         pagination_html=pagination_html+'''
         <a href="/page/%d.html" class="next_link">下一页-></a>
         '''% (index+1)
+    else:
+        pagination_html=pagination_html+'''
+        <a href="#" class="next_link" visibility="hiddern"></a>
+        '''
     pagination_html=pagination_html+'''
         <a href='/archive.html' class='center_link'>-归档-</a>
     </nav>
