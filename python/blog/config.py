@@ -1,5 +1,6 @@
 from os import path
 
+ROOT_URL_PREFIX="https://www.li1996.cn"
 ROOT_PATH=path.abspath(path.join(path.dirname(__file__), "../../"))
 
 CONF_PREFIX_PATH=path.abspath(path.join(path.dirname(__file__), "../../conf"))
