@@ -26,8 +26,11 @@ def generate_post_preface(info):
 
 def generate_page(post_arr,index,has_former,has_next):
     html_str=''
-    for post in post_arr:
-        html_str+=generate_li(generate_post_preface(post))
+    if len(post_arr)==0:
+        html_str='当前暂无帖子'
+    else:
+        for post in post_arr:
+            html_str+=generate_li(generate_post_preface(post))
     
     main='''
     <ul class="post_catlog">
@@ -84,20 +87,23 @@ def generate_pages():
     with open(POST_JSON_PATH,'r',encoding='utf-8') as fd:
         posts=json.load(fd)['posts']
         posts_cnt=len(posts)
-        cur_cnt=0
-        index=0
-        while cur_cnt<posts_cnt:
-            if cur_cnt==0:
-                has_former=False
-            else:
-                has_former=True
-            cur_cnt+=POST_CNT_PER_PAGE
-            if(cur_cnt<posts_cnt):
-                has_next=True
-            else:
-                has_next=False
-            generate_page(posts[(cur_cnt-POST_CNT_PER_PAGE):cur_cnt],index,has_former,has_next)
-            index+=1
+        if posts_cnt==0:
+            generate_page([],0,False,False)
+        else:
+            cur_cnt=0
+            index=0
+            while cur_cnt<posts_cnt:
+                if cur_cnt==0:
+                    has_former=False
+                else:
+                    has_former=True
+                cur_cnt+=POST_CNT_PER_PAGE
+                if(cur_cnt<posts_cnt):
+                    has_next=True
+                else:
+                    has_next=False
+                generate_page(posts[(cur_cnt-POST_CNT_PER_PAGE):cur_cnt],index,has_former,has_next)
+                index+=1
     print("生成全部page导航页面成功")
 
 
