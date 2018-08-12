@@ -9,7 +9,7 @@ def generate_rss_item(title,link,description,pubDate):
     return '''<item>
     <title>
         %s
-    </tile>
+    </title>
     <link>
         %s
     </link>
