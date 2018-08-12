@@ -122,9 +122,11 @@
 </ul>
 </div>
 <h2 id="css">页面渲染前加入动态的CSS的文件？</h2>
-<p>这是我自己的说法，可能不大对。主要描述的是这样的场景：
-<em> css文件url的前缀可能经常变化（比如换对象存储的提供商、需要做迁移）
-</em> 我们希望在渲染前完成css样式文件的加载</p>
+<p>这是我自己的说法，可能不大对。主要描述的是这样的场景：</p>
+<ul>
+<li>css文件url的前缀可能经常变化（比如换对象存储的提供商、需要做迁移）</li>
+<li>我们希望在渲染前完成css样式文件的加载</li>
+</ul>
 <p>所以我的方案场景代码是这样的：</p>
 <div class="codehilite"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
