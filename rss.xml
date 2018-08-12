@@ -1,0 +1,46 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Xl的博客</title>
+        <link>https://www.li1996.cn</link>
+        <description>Xl的博客</description>
+        <atom:link href="https://www.li1996.cn/rss.xml" rel="self"/>
+        <language>zh-cn</language>
+        <lastBuildDate>2018-08-12 20:29:23</lastBuildDate>
+    </channel>
+    <item>
+    <title>
+        如何在页面渲染前加入动态的CSS的文件
+    </tile>
+    <link>
+        /post/how_to_import_dynamic_css_file_before_rendering/index.html
+    </link>
+    <description>
+        <h2 id="css">页面渲染前加入动态的CSS的文件？</h2>
+<p>这是我自己的说法，可能不大对。主要描述的是这样的场景：</p>
+<ul>
+<li>css文件url的前缀可能经常变化（比如换对象存储的提供商、需要做迁移）</li>
+<li>我们希望在渲染前完成css样式文件的加载</li>
+</ul>
+<p>所以我的方案场景代码是这样的：</p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;remoteCss&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">tempHref</span><span class="o">=</span><span class="s">&quot;/css/global.css&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>希望，能够在页面渲染前完成样式文件的引入。css文件url前缀可能为http://baidu.com或者其他。目前我没有搜索到相关的解决方案。</p>
+    </description>
+    <pubDate>
+        2018-08-12 20:26:24
+    </pubDate>
+    <guid>
+        /post/how_to_import_dynamic_css_file_before_rendering/index.html
+    </guid>
+</item>
+</rss>

@@ -1,6 +1,11 @@
 from os import path
 
+LANGUAGE='zh-cn'
+BLOG_NAME='Xl的博客'
+BLOG_DESCRIPTION='Xl的博客'
 ROOT_URL_PREFIX="https://www.li1996.cn"
+RSS_FILE_PATH='rss.xml'
+
 ROOT_PATH=path.abspath(path.join(path.dirname(__file__), "../../"))
 
 CONF_PREFIX_PATH=path.abspath(path.join(path.dirname(__file__), "../../conf"))

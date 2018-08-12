@@ -5,6 +5,8 @@ from post_json import generate_post_json
 from archive import generate_archive
 from tag import generate_tag
 from page import generate_pages
+from sitemap import generate_sitemap
+from rss import generate_rss
 
 def generate_all_posts():
     cnt=0
@@ -18,6 +20,8 @@ def generate_all_posts():
     generate_pages()
     generate_archive()
     generate_tag()
-
+    generate_sitemap()
+    generate_rss()
+    
 if __name__=="__main__":
     generate_all_posts()
