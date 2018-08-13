@@ -65,7 +65,7 @@ def generate_sitemap():
             urls_str+=generate_url(loc,lastmod,changefreq,priority)
 
     sitemap_str='''<?xml version="1.0" encoding="utf-8"?>
- <urlset>
+ <urlset xmlns="http://www.google.com/schemas/sitemap/0.9">
 %s
  </urlset>
 ''' %(urls_str)
