@@ -1,9 +1,13 @@
 import os
 import time
 import json
-from blog.config import ROOT_URL_PREFIX,ROOT_PATH,POST_JSON_PATH
+from blog.html import Html
+from blog import const
 
-URL_PREFIX="https://www.li1996.cn"
+
+SITE_MAP_FILE_PATH='sitemap.xml'
+
+# html页面文件
 STATIC_HTML_ARR=[
     "40x.html",
     "50x.html",
@@ -17,11 +21,12 @@ STATIC_HTML_ARR=[
     "works.html",
 ]
 
+# html页面文件夹
 HTML_DIR_ARR=[
     "page"
 ]
 
-def generate_url(loc,lastmod,changefreq,priority):
+def _generate_url(loc,lastmod,changefreq,priority):
     return'''
     <url>
         <loc>%s</loc>
@@ -33,47 +38,47 @@ def generate_url(loc,lastmod,changefreq,priority):
 
 
 def generate_sitemap():
-    urls_str=''
+    urlset_str=''
+
     for static_html in STATIC_HTML_ARR:
-        file_path=os.path.join(ROOT_PATH,static_html)
+        file_path=os.path.join(const.PUBLIC_PATH,static_html)
         mtime=os.path.getmtime(file_path)
         lastmod=time.strftime('%Y-%m-%d',time.localtime(mtime))
-        loc=ROOT_URL_PREFIX+'/'+static_html
+        loc=const.DOMAIN_ROOT_URL_PREFIX+'/'+static_html
         changefreq='hourly'
         priority='1.0'
-        urls_str+=generate_url(loc,lastmod,changefreq,priority)
+        urlset_str+=_generate_url(loc,lastmod,changefreq,priority)
     
     for dir_name in HTML_DIR_ARR:
-        real_dir=os.path.join(ROOT_PATH,dir_name)
+        real_dir=os.path.join(const.PUBLIC_PATH,dir_name)
         for item in os.listdir(real_dir):
             if item.endswith('.html'):
                 file_path=os.path.join(real_dir,item)
                 mtime=os.path.getmtime(file_path)
                 lastmod=time.strftime('%Y-%m-%d',time.localtime(mtime))
-                loc=ROOT_URL_PREFIX+'/'+dir_name+'/'+item
+                loc=const.DOMAIN_ROOT_URL_PREFIX+'/'+dir_name+'/'+item
                 changefreq='hourly'
                 priority='0.9'
-                urls_str+=generate_url(loc,lastmod,changefreq,priority)
+                urlset_str+=_generate_url(loc,lastmod,changefreq,priority)
     
-    with open(POST_JSON_PATH,'r',encoding='utf-8') as fd:
+    with open(const.POST_JSON_FILE_PATH,'r',encoding='utf-8') as fd:
         posts=json.load(fd)['posts']
         for post in posts:
             lastmod=post['datetime'][0:post['datetime'].index(' ')]
-            loc=ROOT_URL_PREFIX+post['link']
+            loc=const.DOMAIN_ROOT_URL_PREFIX+post['link']
             changefreq='daily'
             priority='0.9'
-            urls_str+=generate_url(loc,lastmod,changefreq,priority)
+            urlset_str+=_generate_url(loc,lastmod,changefreq,priority)
 
-    sitemap_str='''<?xml version="1.0" encoding="utf-8"?>
- <urlset xmlns="http://www.google.com/schemas/sitemap/0.9">
-%s
- </urlset>
-''' %(urls_str)
-    file_name=os.path.join(ROOT_PATH,'sitemap.xml')
+    urlset = Html.generate_element_by_str('urlset',urlset_str, xmlns="http://www.google.com/schemas/sitemap/0.9")
+    return'''<?xml version="1.0" encoding="utf-8"?>%s''' %(urlset)
+
+def generate_sitemap_file():
+    file_name=os.path.join(const.PUBLIC_PATH,SITE_MAP_FILE_PATH)
     with open(file_name,'w+',encoding='utf-8') as fd:
-        fd.write(sitemap_str)
-    print("生成sitemap成功：%s" %(file_name))
+        fd.write(generate_sitemap())
+    print("生成 sitemap 成功：%s" %(file_name))
 
 
 if __name__=="__main__":
-    generate_sitemap()
+    generate_sitemap_file()
