@@ -1,0 +1,48 @@
+article.post {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+article.post div.post_meta {
+  position: relative;
+  float: right;
+  text-align: right;
+  width: 100px;
+  height: 50px;
+}
+article.post div.post_meta .post_meta_date {
+  color: #555;
+}
+article.post div.post_meta .post_comment_cnt {
+  color: #999;
+}
+article.post h1 {
+  margin-bottom: 10px;
+  margin-right: 100px;
+}
+article.post h1 a {
+  font-size: 1.48em;
+}
+article.post div.toc {
+  position: relative;
+  float: right;
+  width: auto;
+  border: 1px solid #DDD;
+}
+article.post div.toc::before {
+  content: "文章目录";
+}
+article.post div.post_end {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+@media all and (max-width: 750px) {
+  article.post div.post_meta {
+    display: none;
+  }
+  article.post h1 {
+    margin-right: 0;
+  }
+  article.post div.toc {
+    display: none;
+  }
+}

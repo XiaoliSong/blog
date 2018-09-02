@@ -1,0 +1,19 @@
+ul.post_catlog {
+  list-style: none;
+  margin-left: 0;
+}
+nav.pagination {
+  margin: 10px 0;
+  text-align: center;
+}
+nav.pagination a {
+  font-weight: 600;
+}
+nav.pagination a.former_link {
+  float: left;
+  width: 80px;
+}
+nav.pagination a.next_link {
+  float: right;
+  width: 80px;
+}
