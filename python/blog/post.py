@@ -79,8 +79,9 @@ def generate_post_file(post_id):
 def generate_all_posts_file():
     cnt = 0
     for dir_name in os.listdir(const.POST_DIR_PATH):
-        post_id = os.path.join(const.POST_DIR_PATH, dir_name)
-        if (os.path.isdir(post_id)):
+        post_dir = os.path.join(const.POST_DIR_PATH, dir_name)
+        post_id = dir_name
+        if (os.path.isdir(post_dir)):
             generate_post_file(post_id)
             cnt += 1
     print("生成全部帖子成功，共：" + str(cnt) + "个")
