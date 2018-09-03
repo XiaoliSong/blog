@@ -58,6 +58,6 @@ class Html:
 
     @classmethod
     def prettify(cls, html_str):
-        soup = BeautifulSoup(html_str)
+        soup = BeautifulSoup(html_str, 'html.parser')
         return soup.prettify()
         
