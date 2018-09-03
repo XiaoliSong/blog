@@ -108,4 +108,5 @@ class Page:
 
         footer = cls.__generate_footer(global_conf['footer'], end_css_arr,
                                        end_js_arr)
-        return '%s %s %s %s %s' % (head, header, sidebar, main, footer)
+        html_str = ' '.join([head, header, sidebar, main, footer])
+        return Html.prettify(html_str)

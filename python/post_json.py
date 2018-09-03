@@ -36,7 +36,7 @@ def generate_post_json():
     post_arr = sorted(
         post_arr, key=functools.cmp_to_key(post_time_cmp_func), reverse=True)
     post_json = {'posts': post_arr}
-    return json.dumps(post_json)
+    return json.dumps(post_json, indent=4, separators=(',', ':'))
 
 
 def generate_post_json_file():

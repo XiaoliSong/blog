@@ -48,11 +48,12 @@ def generate_rss():
         'channel',
         [title, link, description, atom_link, language, lastBuildDate])
 
-    return '''<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    rss_str = '''<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     %s
     %s
 </rss>
 ''' % (channel, item_str)
+    return Html.prettify(rss_str)
 
 
 def generate_rss_file():

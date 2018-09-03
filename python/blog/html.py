@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-
 import markdown
+from bs4 import BeautifulSoup
 
 
 class Html:
@@ -55,3 +55,9 @@ class Html:
     @classmethod
     def generate_js(cls, url):
         return cls.generate_element_by_str('script','',src=url)
+
+    @classmethod
+    def prettify(cls, html_str):
+        soup = BeautifulSoup(html_str)
+        return soup.prettify()
+        
