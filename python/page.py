@@ -74,7 +74,7 @@ def generate_page_file(post_arr, index, has_former, has_next):
     with open(page_file_name, 'w+', encoding='utf-8') as fd:
         html = Page.generate_complete_html(page_conf, main_html)
         fd.write(html)
-        print("生成page成功，页号：%d" % (index))
+        print("生成 page 成功，页号：%d" % (index))
 
     # 生成首页
     if index == 0:
@@ -82,7 +82,7 @@ def generate_page_file(post_arr, index, has_former, has_next):
         with open(file_name, 'w+', encoding='utf-8') as fd:
             html = Page.generate_complete_html(page_conf, main_html)
             fd.write(html)
-            print("生成首页成功")
+            print("生成 首页 成功")
 
 
 def generate_all_pages_file():
@@ -109,7 +109,7 @@ def generate_all_pages_file():
                     has_former, has_next)
                 left += const.POST_CNT_PER_PAGE
                 index += 1
-    print("生成全部page导航页面成功")
+    print("生成 全部page导航页面 成功")
 
 
 if __name__ == "__main__":

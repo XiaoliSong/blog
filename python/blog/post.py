@@ -90,3 +90,19 @@ def generate_all_posts_file():
             generate_post_file(post_id)
             cnt += 1
     print("生成全部帖子成功，共：" + str(cnt) + "个")
+
+
+def generate_changed_posts_file():
+    with open(const.POST_JSON_FILE_PATH, 'r', encoding='utf-8') as fd:
+        posts = json.load(fd)['posts']
+    posts = {x['id']: x for x in posts}
+    cnt = 0
+    for dir_name in os.listdir(const.POST_DIR_PATH):
+        post_dir = os.path.join(const.POST_DIR_PATH, dir_name)
+        post_id = dir_name
+        if os.path.isdir(post_dir) and (post_id not in posts
+                                        or posts[post_id]['datetime'] !=
+                                        util.get_post_datetime(post_id)):
+            generate_post_file(post_id)
+            cnt += 1
+    print("生成全部变化的帖子成功，共：" + str(cnt) + "个")
