@@ -23,7 +23,7 @@
   src: local('Vollkorn Bold'), local('Vollkorn-Bold'), url(https://fonts.gstatic.com/s/vollkorn/v8/0yb6GDoxxrvAnPhYGxGSTVg5jBA.ttf) format('truetype');
 }
 .md * {
-  padding: 5px 0;
+  padding: 3px 0;
   color: #444;
 }
 .md pre {
