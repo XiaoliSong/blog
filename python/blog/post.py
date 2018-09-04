@@ -30,7 +30,7 @@ def generate_post_meta(date, id):
     post_commet_cnt_a_span2 = Html.generate_element_by_str('span', ' 评论')
     post_commet_cnt_a = Html.generate_element_by_strs(
         'a', [post_commet_cnt_a_span1, post_commet_cnt_a_span2],
-        href="#SOHUCS")
+        href=const.POST_URL_PREFIX + id + '/index.html#SOHUCS')
     post_commet_cnt = Html.generate_element_by_str(
         'div', post_commet_cnt_a, class_name='post_commet_cnt')
     return Html.generate_element_by_strs(
@@ -39,10 +39,15 @@ def generate_post_meta(date, id):
 
 def generate_post_article(title, date, id, text):
     post_meta = generate_post_meta(date, id)
-    h1_a = Html.generate_element_by_str('a', title, href='#', title=title)
+    h1_a = Html.generate_element_by_str(
+        'a',
+        title,
+        href=const.POST_URL_PREFIX + id + '/index.html',
+        title=title)
     h1 = Html.generate_element_by_str('h1', h1_a)
     return Html.generate_element_by_strs(
         'article', [post_meta, h1, text], class_name='post')
+
 
 def generate_post_main(title, date, id, text, tags):
     article = generate_post_article(title, date, id, text)
