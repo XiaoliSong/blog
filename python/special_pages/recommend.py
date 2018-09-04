@@ -22,7 +22,7 @@ def generate_recommend_page():
         posts = json.load(fd)['posts']
     tag_info_arr, tag_posts_arr = special_pages.util.generate_tag_data(posts)
 
-    h1 = Html.generate_element_by_str('h1', '标签')
+    h1 = Html.generate_element_by_str('h1', '推荐')
     tag_ul = special_pages.util.generate_tag_ul(tag_info_arr)
     tag_contents_ul = special_pages.util.generate_tag_contents_ul(tag_posts_arr)
     main_content = ' '.join([h1, tag_ul, tag_contents_ul])
