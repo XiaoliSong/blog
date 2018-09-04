@@ -1,5 +1,6 @@
 ul#tags_ul {
   margin: 10px 5px;
+  padding: 0;
   list-style: none;
 }
 ul#tags_ul li {
@@ -49,4 +50,5 @@ ul#tag_contents_ul li ul li a {
 ul#tag_contents_ul li ul li span {
   font-size: 0.7em;
   color: #777;
+  font-style: italic;
 }

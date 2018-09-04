@@ -23,12 +23,12 @@
   src: local('Vollkorn Bold'), local('Vollkorn-Bold'), url(https://fonts.gstatic.com/s/vollkorn/v8/0yb6GDoxxrvAnPhYGxGSTVg5jBA.ttf) format('truetype');
 }
 .md * {
-  padding: 2px 0;
+  padding: 5px 0;
   color: #444;
 }
 .md pre {
-  background: #eee;
-  padding: 5px;
+  background: #f8f8f8;
+  padding: 10px 8px;
   overflow: auto;
   overflow-y: hidden;
   scrollbar-arrow-color: #f4ae21;
@@ -65,7 +65,7 @@
   cursor: pointer;
 }
 .md h1 {
-  font-size: 1.48em;
+  font-size: 1.45em;
 }
 .md h2 {
   font-size: 1.4em;
@@ -118,7 +118,7 @@
   text-align: center;
 }
 .md table tr:nth-child(even) {
-  background: #eee;
+  background: #f8f8f8;
 }
 .md .codehilite {
   background: #f8f8f8;
@@ -188,7 +188,6 @@
 }
 .md .codehilite .c {
   color: #408080;
-  font-style: italic;
 }
 .md .codehilite .err {
   border: 1px solid #FF0000;
@@ -202,18 +201,15 @@
 }
 .md .codehilite .cm {
   color: #408080;
-  font-style: italic;
 }
 .md .codehilite .cp {
   color: #BC7A00;
 }
 .md .codehilite .c1 {
   color: #408080;
-  font-style: italic;
 }
 .md .codehilite .cs {
   color: #408080;
-  font-style: italic;
 }
 .md .codehilite .gd {
   color: #A00000;
@@ -344,7 +340,6 @@
 }
 .md .codehilite .sd {
   color: #BA2121;
-  font-style: italic;
 }
 .md .codehilite .s2 {
   color: #BA2121;
