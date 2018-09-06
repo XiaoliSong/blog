@@ -43,8 +43,14 @@ def exec_all_posts():
     exec_sitemap()
 
 
+def exec_dir_posts(dir_name, post_name = None):
+    if post_name is None:
+        os.system(SCRIPT_PREFIX + 'dir_posts.py ' + dir_name)
+    else:
+        os.system(SCRIPT_PREFIX + 'dir_posts.py '+ dir_name + ' ' + post_name)
+
 if __name__ == "__main__":
-    if len(sys.argv) == 2:
+    if len(sys.argv) >= 2:
         if sys.argv[1] == 'recommend':
             exec_recomend()
         elif sys.argv[1] == 'post':
@@ -52,6 +58,11 @@ if __name__ == "__main__":
         elif sys.argv[1] == 'general':
             exec_general_pages()
         else:
-            print('参数错误')
+            dir_name = sys.argv[1]
+            if len(sys.argv) == 2:
+                exec_dir_posts(dir_name)
+            else:
+                post_name = sys.argv[2]
+                exec_dir_posts(dir_name, post_name)
     else:
         print('参数个数不够')
