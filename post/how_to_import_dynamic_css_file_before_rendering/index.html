@@ -3,8 +3,8 @@
   <title>
    如何在页面渲染前加入动态的CSS的文件
   </title>
-  <meta content="如何在页面渲染前加入动态的CSS的文件,Xl的博客" name="keywords"/>
-  <meta content="Xl的博客" name="description"/>
+  <meta content="如何在页面渲染前加入动态的CSS的文件,,Xiaoli Song,xiaolisong" name="keywords"/>
+  <meta content="Xiaoli Song,xiaolison" name="description"/>
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
   <link href="https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/global.css" rel="stylesheet" type="text/css"/>
@@ -19,16 +19,16 @@
     <img alt="关于" src="https://blog-1252791686.cos.ap-beijing.myqcloud.com/icon/logo.png"/>
    </a>
    <h1>
-    Xl的博客
+    Xiaoli Song
    </h1>
   </div>
   <nav id="sidebar">
    <div id="profile">
-    <a href="/" title="Xl的博客">
-     <img alt="Xl的博客" src="https://blog-1252791686.cosbj.myqcloud.com/icon/logo.png"/>
+    <a href="/" title="Xiaoli Song">
+     <img alt="Xiaoli Song" src="https://blog-1252791686.cosbj.myqcloud.com/icon/logo.png"/>
     </a>
     <span>
-     Xl的博客
+     Xiaoli Song
     </span>
    </div>
    <ul id="row_links">
@@ -112,7 +112,7 @@
     <article class="post">
      <div class="post_meta">
       <div class="post_meta_date">
-       2018-09-03
+       2018-09-08
       </div>
       <div class="post_commet_cnt">
        <a href="/post/how_to_import_dynamic_css_file_before_rendering/index.html#SOHUCS">
@@ -217,40 +217,40 @@
      </h2>
      <p>
       首先，需要把js脚本放在head里面，保证渲染页面前先执行脚本。然后我们需要利用到css的import特性。
-     </p>
-     <div class="codehilite">
-      <pre><span></span><span class="o">&lt;</span><span class="cp">!DOCTYPE html</span><span class="o">&gt;</span>
+    </p>
+    <div class="codehilite">
+     <pre><span></span><span class="o">&lt;</span><span class="cp">!DOCTYPE html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nt">html</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nt">head</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nt">link</span> <span class="n">class</span><span class="o">=</span><span class="s2">"remote_css"</span> <span class="n">rel</span><span class="o">=</span><span class="s2">"stylesheet"</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"text/css"</span> <span class="n">temp_href</span><span class="o">=</span><span class="s2">"/css/global.css"</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nt">script</span><span class="o">&gt;</span>
-        <span class="p">(</span><span class="nt">function</span><span class="p">(){</span>
-            <span class="nt">const</span> <span class="n">URL_PREFIX</span><span class="o">=</span><span class="s2">"http://www.baidu.com"</span><span class="p">;</span>
-            <span class="nt">let</span> <span class="n">css_arr</span><span class="o">=</span><span class="n">document</span><span class="o">.</span><span class="n">getElementsByClassName</span><span class="p">(</span><span class="s2">"remote_css"</span><span class="p">);</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">css_arr</span><span class="o">.</span><span class="n">length</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+   <span class="o">&lt;</span><span class="nt">link</span> <span class="n">class</span><span class="o">=</span><span class="s2">"remote_css"</span> <span class="n">rel</span><span class="o">=</span><span class="s2">"stylesheet"</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"text/css"</span> <span class="n">temp_href</span><span class="o">=</span><span class="s2">"/css/global.css"</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nt">script</span><span class="o">&gt;</span>
+       <span class="p">(</span><span class="nt">function</span><span class="p">(){</span>
+           <span class="nt">const</span> <span class="n">URL_PREFIX</span><span class="o">=</span><span class="s2">"http://www.baidu.com"</span><span class="p">;</span>
+           <span class="nt">let</span> <span class="n">css_arr</span><span class="o">=</span><span class="n">document</span><span class="o">.</span><span class="n">getElementsByClassName</span><span class="p">(</span><span class="s2">"remote_css"</span><span class="p">);</span>
+           <span class="k">if</span><span class="p">(</span><span class="n">css_arr</span><span class="o">.</span><span class="n">length</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
 
-            <span class="nt">let</span> <span class="n">new_style</span><span class="o">=</span><span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">'style'</span><span class="p">);</span>
-            <span class="nt">new_style</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">"type"</span><span class="p">,</span><span class="s2">"text/css"</span><span class="p">);</span>
-            <span class="nt">let</span> <span class="n">new_css</span><span class="o">=</span><span class="s2">""</span><span class="p">;</span>
-            <span class="k">for</span><span class="p">(</span><span class="n">let</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">css_arr</span><span class="o">.</span><span class="n">length</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
-                <span class="nt">new_css</span><span class="o">=</span><span class="n">new_css</span><span class="o">+</span><span class="s2">"@import url('"</span><span class="o">+</span><span class="n">URL_PREFIX</span><span class="o">+</span><span class="n">css_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">"temp_href"</span><span class="p">)</span><span class="o">+</span><span class="s2">"');</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">new_style</span><span class="o">.</span><span class="n">styleSheet</span><span class="p">){</span>
-                <span class="n">new_style</span><span class="o">.</span><span class="n">styleSheet</span><span class="o">.</span><span class="n">cssText</span><span class="o">=</span><span class="n">newCss</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="k">else</span><span class="p">{</span>
-                <span class="n">new_style</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">createTextNode</span><span class="p">(</span><span class="n">new_css</span><span class="p">));</span>
-            <span class="p">}</span>
-            <span class="n">document</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s1">'head'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">new_style</span><span class="p">);</span>
-        <span class="p">})();</span>
-    <span class="o">&lt;/</span><span class="nt">script</span><span class="o">&gt;</span>
+           <span class="nt">let</span> <span class="n">new_style</span><span class="o">=</span><span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">'style'</span><span class="p">);</span>
+           <span class="nt">new_style</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">"type"</span><span class="p">,</span><span class="s2">"text/css"</span><span class="p">);</span>
+           <span class="nt">let</span> <span class="n">new_css</span><span class="o">=</span><span class="s2">""</span><span class="p">;</span>
+           <span class="k">for</span><span class="p">(</span><span class="n">let</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">css_arr</span><span class="o">.</span><span class="n">length</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+               <span class="nt">new_css</span><span class="o">=</span><span class="n">new_css</span><span class="o">+</span><span class="s2">"@import url('"</span><span class="o">+</span><span class="n">URL_PREFIX</span><span class="o">+</span><span class="n">css_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">"temp_href"</span><span class="p">)</span><span class="o">+</span><span class="s2">"');</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="k">if</span><span class="p">(</span><span class="n">new_style</span><span class="o">.</span><span class="n">styleSheet</span><span class="p">){</span>
+               <span class="n">new_style</span><span class="o">.</span><span class="n">styleSheet</span><span class="o">.</span><span class="n">cssText</span><span class="o">=</span><span class="n">newCss</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="k">else</span><span class="p">{</span>
+               <span class="n">new_style</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">document</span><span class="o">.</span><span class="n">createTextNode</span><span class="p">(</span><span class="n">new_css</span><span class="p">));</span>
+           <span class="p">}</span>
+           <span class="n">document</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s1">'head'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">new_style</span><span class="p">);</span>
+       <span class="p">})();</span>
+   <span class="o">&lt;/</span><span class="nt">script</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="nt">head</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="nt">body</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nt">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">"main"</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nt">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">"main"</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="nt">body</span><span class="o">&gt;</span>
 <span class="o">&lt;/</span><span class="nt">html</span><span class="o">&gt;</span>
 </pre>
-     </div>
+    </div>
     </article>
     <div class="post_end">
      <br/>
@@ -269,9 +269,9 @@
     </script>
    </div>
    <footer>
-    Xl的博客 -
-    <a href="http://li1996.cn" title="Xl的博客">
-     li1996.cn
+    Xiaoli Song -
+    <a href="http://xiaolisong.cn" title="Xiaoli Song">
+     xiaolisong.cn
     </a>
    </footer>
   </div>
