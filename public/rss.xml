@@ -1,20 +1,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
  <channel>
   <title>
-   Xl的博客
+   Xiaoli Song
   </title>
   <link/>
-  https://www.li1996.cn
+  https://www.xiaolisong.cn
   <description>
-   Xl的博客
+   Xiaoli Song,xiaolison
   </description>
-  <atom:link href="https://www.li1996.cn/rss.xml" rel="self">
+  <atom:link href="https://www.xiaolisong.cn/rss.xml" rel="self">
   </atom:link>
   <language>
    zh-cn
   </language>
   <lastbuilddate>
-   2018-09-04 15:39:27
+   2018-09-08 01:31:42
   </lastbuilddate>
  </channel>
  <item>
@@ -58,7 +58,7 @@
    </p>
   </description>
   <pubdate>
-   2018-09-03 01:35:51
+   2018-09-08 01:23:40
   </pubdate>
   <guid>
    <link/>

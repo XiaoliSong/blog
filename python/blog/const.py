@@ -1,9 +1,9 @@
 from os import path
 
 LANGUAGE = 'zh-cn'
-BLOG_NAME = 'Xl的博客'
-BLOG_DESCRIPTION = 'Xl的博客'
-DOMAIN_ROOT_URL_PREFIX = "https://www.li1996.cn"
+BLOG_NAME = 'Xiaoli Song'
+BLOG_DESCRIPTION = 'Xiaoli Song,xiaolison'
+DOMAIN_ROOT_URL_PREFIX = "https://www.xiaolisong.cn"
 ROOT_URL_PREFIX = "/"
 POST_URL_PREFIX = '/post/'
 
