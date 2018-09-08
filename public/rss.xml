@@ -14,9 +14,34 @@
    zh-cn
   </language>
   <lastbuilddate>
-   2018-09-08 01:31:42
+   2018-09-08 15:57:31
   </lastbuilddate>
  </channel>
+ <item>
+  <title>
+   Python不同项目加载公共模块
+  </title>
+  <link/>
+  /post/how_to_load_common_modules_in_python/index.html
+  <description>
+   <h2 id="_1">
+    需求场景
+   </h2>
+   <p>
+    开发一个web项目项目时，不仅需要一个网站的后台服务，通常还需要开发相应的管理后台（如CMS、CRM）。因此可以它拆成两个项目进行分别进行开发，也可以放在一起合成一个项目开发。如果拆分成两个项目的话，大部分代码其实是类似的，两个项目的更新需要进行同步，比较麻烦且容易出错。所以，针对这个问题，我的做法是拆分成三个项目，分别是公共项目、网站后台、管理后台。
+   </p>
+   <p>
+    分成三个项目，公共项目是其他两个项目的依赖，后两个项目导致加载模块时引入公共项目的模块。可以采用直接把文件复制过去，但略显麻烦，有没有更好的办法呢？
+   </p>
+  </description>
+  <pubdate>
+   2018-09-08 15:57:28
+  </pubdate>
+  <guid>
+   <link/>
+   /post/how_to_load_common_modules_in_python/index.html
+  </guid>
+ </item>
  <item>
   <title>
    如何在页面渲染前加入动态的CSS的文件

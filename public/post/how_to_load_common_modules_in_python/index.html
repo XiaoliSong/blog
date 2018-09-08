@@ -1,0 +1,313 @@
+<html>
+ <head>
+  <title>
+   Python不同项目加载公共模块
+  </title>
+  <meta content="Python不同项目加载公共模块,Xiaoli Song,xiaolisong" name="keywords"/>
+  <meta content="Xiaoli Song,xiaolison" name="description"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
+  <link href="https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/global.css" rel="stylesheet" type="text/css"/>
+  <link href="https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/md.css" rel="stylesheet" type="text/css"/>
+  <link href="https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/article.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <div id="header">
+   <button id="switch_btn">
+   </button>
+   <a href="/about.html" title="关于">
+    <img alt="关于" src="https://blog-1252791686.cos.ap-beijing.myqcloud.com/icon/logo.png"/>
+   </a>
+   <h1>
+    Xiaoli Song
+   </h1>
+  </div>
+  <nav id="sidebar">
+   <div id="profile">
+    <a href="/" title="Xiaoli Song">
+     <img alt="Xiaoli Song" src="https://blog-1252791686.cosbj.myqcloud.com/icon/logo.png"/>
+    </a>
+    <span>
+     Xiaoli Song
+    </span>
+   </div>
+   <ul id="row_links">
+    <li>
+     <a href="/index.html">
+      <img alt="首页" src="https://blog-1252791686.cosbj.myqcloud.com/icon/home.png"/>
+      <span>
+       首页
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/archive.html">
+      <img alt="归档" src="https://blog-1252791686.cosbj.myqcloud.com/icon/archives.png"/>
+      <span>
+       归档
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/tag.html">
+      <img alt="标签" src="https://blog-1252791686.cosbj.myqcloud.com/icon/tags.png"/>
+      <span>
+       标签
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/works.html">
+      <img alt="作品" src="https://blog-1252791686.cosbj.myqcloud.com/icon/works.png"/>
+      <span>
+       作品
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/recommend.html">
+      <img alt="推荐" src="https://blog-1252791686.cosbj.myqcloud.com/icon/recommend.png"/>
+      <span>
+       推荐
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/about.html">
+      <img alt="关于" src="https://blog-1252791686.cosbj.myqcloud.com/icon/about.png"/>
+      <span>
+       关于
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/friends.html">
+      <img alt="友链" src="https://blog-1252791686.cosbj.myqcloud.com/icon/friends.png"/>
+      <span>
+       友链
+      </span>
+     </a>
+    </li>
+   </ul>
+   <ul id="col_links">
+    <li>
+     <a href="https://github.com/XiaoliSong/">
+      <img alt="GitHub" src="https://blog-1252791686.cosbj.myqcloud.com/icon/github.png"/>
+     </a>
+    </li>
+    <li>
+     <a href="/search.html">
+      <img alt="Search" src="https://blog-1252791686.cosbj.myqcloud.com/icon/search.png"/>
+     </a>
+    </li>
+    <li>
+     <a href="/rss.xml">
+      <img alt="RSS" src="https://blog-1252791686.cosbj.myqcloud.com/icon/rss.png"/>
+     </a>
+    </li>
+   </ul>
+  </nav>
+  <div id="main">
+   <div class="md" id="content">
+    <article class="post">
+     <div class="post_meta">
+      <div class="post_meta_date">
+       2018-09-08
+      </div>
+      <div class="post_commet_cnt">
+       <a href="/post/how_to_load_common_modules_in_python/index.html#SOHUCS">
+        <span class="cy_cmt_count" id="sourceId::how_to_load_common_modules_in_python">
+        </span>
+        <span>
+         评论
+        </span>
+       </a>
+      </div>
+     </div>
+     <h1>
+      <a href="/post/how_to_load_common_modules_in_python/index.html" title="Python不同项目加载公共模块">
+       Python不同项目加载公共模块
+      </a>
+     </h1>
+     <div class="toc">
+      <ul>
+       <li>
+        <a href="#_1">
+         需求场景
+        </a>
+       </li>
+       <li>
+        <a href="#_2">
+         我的方案
+        </a>
+        <ul>
+         <li>
+          <a href="#_3">
+           项目结构
+          </a>
+         </li>
+         <li>
+          <a href="#load_common">
+           load_common加载脚本
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <a href="#_4">
+         示例
+        </a>
+       </li>
+      </ul>
+     </div>
+     <h2 id="_1">
+      需求场景
+     </h2>
+     <p>
+      开发一个web项目项目时，不仅需要一个网站的后台服务，通常还需要开发相应的管理后台（如CMS、CRM）。因此可以它拆成两个项目进行分别进行开发，也可以放在一起合成一个项目开发。如果拆分成两个项目的话，大部分代码其实是类似的，两个项目的更新需要进行同步，比较麻烦且容易出错。所以，针对这个问题，我的做法是拆分成三个项目，分别是公共项目、网站后台、管理后台。
+     </p>
+     <p>
+      分成三个项目，公共项目是其他两个项目的依赖，后两个项目导致加载模块时引入公共项目的模块。可以采用直接把文件复制过去，但略显麻烦，有没有更好的办法呢？
+     </p>
+     <h2 id="_2">
+      我的方案
+     </h2>
+     <p>
+      下面介绍我的解决方案：
+     </p>
+     <h3 id="_3">
+      项目结构
+     </h3>
+     <ul>
+      <li>
+       common
+      </li>
+      <li>
+       backend
+      </li>
+      <li>
+       cms
+      </li>
+     </ul>
+     <p>
+      上面是三个文件夹（也就是三个项目）。backend和cms需要引入commom的模块。
+     </p>
+     <h3 id="load_common">
+      load_common加载脚本
+     </h3>
+     <p>
+      backend和cms的load_common加载脚本
+     </p>
+     <div class="codehilite">
+      <pre><span></span><span class="s s-Atom">'''</span>
+<span class="s s-Atom">当前文件所在路径./backend/util/load_common.py</span>
+<span class="s s-Atom">或者./cms/util/load_common.py</span>
+<span class="s s-Atom">'''</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">sys</span>
+<span class="s s-Atom">import</span> <span class="s s-Atom">os</span>
+
+<span class="c1"># 公共项目的绝对路径</span>
+<span class="nv">COMMON_PROJECT_PATH</span> <span class="o">=</span> <span class="s s-Atom">os</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s s-Atom">os</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="k">__</span><span class="s s-Atom">file__</span><span class="p">),</span> <span class="s s-Atom">'../../common'</span><span class="p">)</span>
+
+<span class="c1"># 公共模块的依赖模块，如果依赖的包没有在公共模块的包出现，可以不添加</span>
+<span class="s s-Atom">dependent_modules</span> <span class="o">=</span> <span class="p">[</span><span class="s s-Atom">'const.app'</span><span class="p">]</span>
+
+<span class="c1"># 公共模块，应该具体到文件模块，而不是包，如需要引入const.redis不能填util</span>
+<span class="s s-Atom">common_modules</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s s-Atom">'const.redis'</span><span class="p">,</span>
+    <span class="s s-Atom">'const.db'</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="s s-Atom">def</span> <span class="nf">delete_package</span><span class="p">(</span><span class="s s-Atom">module_name</span><span class="p">)</span><span class="s s-Atom">:</span>
+    <span class="s s-Atom">'''删除模块以上的包</span>
+<span class="s s-Atom">    如module_name=util.const.redis，则从sys.modules删除util.const,util</span>
+<span class="s s-Atom">    '''</span>
+    <span class="s s-Atom">parent_packages</span> <span class="o">=</span> <span class="s s-Atom">module_name</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s s-Atom">'.'</span><span class="p">)[</span><span class="mi">0</span><span class="p">:-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="s s-Atom">while</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">parent_packages</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="s s-Atom">:</span>
+        <span class="s s-Atom">parent_package</span> <span class="o">=</span> <span class="s s-Atom">'.'</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s s-Atom">parent_packages</span><span class="p">)</span>
+        <span class="s s-Atom">if</span> <span class="s s-Atom">parent_package</span> <span class="s s-Atom">in</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="nn">modules</span><span class="p">:</span>
+            <span class="s s-Atom">del</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="s s-Atom">modules</span><span class="p">[</span><span class="s s-Atom">parent_package</span><span class="p">]</span>
+            <span class="s s-Atom">parent_packages</span> <span class="o">=</span> <span class="s s-Atom">parent_packages</span><span class="p">[</span><span class="mi">0</span><span class="p">:-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="nn">else</span><span class="p">:</span>
+            <span class="s s-Atom">break</span>
+
+
+<span class="s s-Atom">def</span> <span class="nf">load_module</span><span class="p">(</span><span class="s s-Atom">module_name</span><span class="p">)</span><span class="s s-Atom">:</span>
+    <span class="s s-Atom">'''引入模块</span>
+<span class="s s-Atom">    '''</span>
+    <span class="s s-Atom">import_str</span> <span class="o">=</span> <span class="s s-Atom">'__import__("'</span> <span class="o">+</span> <span class="s s-Atom">module_name</span> <span class="o">+</span> <span class="s s-Atom">'")'</span>
+    <span class="nf">eval</span><span class="p">(</span><span class="s s-Atom">import_str</span><span class="p">)</span>
+
+
+<span class="c1"># 先加载公共模块的依赖模块</span>
+<span class="s s-Atom">for</span> <span class="s s-Atom">dependent_module</span> <span class="s s-Atom">in</span> <span class="s s-Atom">dependent_modules:</span>
+    <span class="nf">load_module</span><span class="p">(</span><span class="s s-Atom">dependent_module</span><span class="p">)</span>
+
+<span class="c1"># 删除已经加载的公共模块及其上面的包</span>
+<span class="s s-Atom">for</span> <span class="s s-Atom">common_module</span> <span class="s s-Atom">in</span> <span class="s s-Atom">common_modules:</span>
+    <span class="s s-Atom">if</span> <span class="s s-Atom">common_module</span> <span class="s s-Atom">in</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="nn">modules</span><span class="p">:</span>
+        <span class="s s-Atom">del</span> <span class="s s-Atom">common_module</span>
+    <span class="nf">delete_package</span><span class="p">(</span><span class="s s-Atom">common_module</span><span class="p">)</span>
+
+<span class="c1"># 设置优先检索公共项目COMMON_PROJECT_PATH</span>
+<span class="s s-Atom">sys</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">COMMON_PROJECT_PATH</span><span class="p">)</span>
+
+<span class="c1"># 导入公共模块common_modules</span>
+<span class="s s-Atom">for</span> <span class="s s-Atom">common_module</span> <span class="s s-Atom">in</span> <span class="s s-Atom">common_modules:</span>
+    <span class="nf">load_module</span><span class="p">(</span><span class="s s-Atom">common_module</span><span class="p">)</span>
+
+<span class="c1"># 恢复优先检索当前文件夹</span>
+<span class="s s-Atom">sys</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">.</span><span class="nf">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 删除公共模块上面的包</span>
+<span class="s s-Atom">for</span> <span class="s s-Atom">common_module</span> <span class="s s-Atom">in</span> <span class="s s-Atom">common_modules:</span>
+    <span class="nf">delete_package</span><span class="p">(</span><span class="s s-Atom">common_module</span><span class="p">)</span>
+
+<span class="c1"># 重新加载当前模块所在包，避免报错</span>
+<span class="s s-Atom">if</span> <span class="s s-Atom">'util'</span> <span class="s s-Atom">in</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="nn">modules</span><span class="p">:</span>
+    <span class="s s-Atom">del</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="s s-Atom">modules</span><span class="p">[</span><span class="s s-Atom">'util'</span><span class="p">]</span>
+    <span class="s s-Atom">import</span> <span class="s s-Atom">util</span>
+<span class="nn">else</span><span class="p">:</span>
+    <span class="s s-Atom">import</span> <span class="s s-Atom">util</span>
+</pre>
+     </div>
+     <h2 id="_4">
+      示例
+     </h2>
+     <p>
+      <a href="https://github.com/XiaoliSong/python_load_common_module">
+       Python不同项目加载公共模块
+      </a>
+     </p>
+    </article>
+    <div class="post_end">
+     <br/>
+     --END--
+     <br/>
+     <div class="post_tags">
+      标签：
+      <a href="/tag.html?tag=Python" title="Python">
+       #Python
+      </a>
+     </div>
+    </div>
+    <div id="SOHUCS" sid="how_to_load_common_modules_in_python">
+    </div>
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytyIIWkH">
+    </script>
+   </div>
+   <footer>
+    Xiaoli Song -
+    <a href="http://xiaolisong.cn" title="Xiaoli Song">
+     xiaolisong.cn
+    </a>
+   </footer>
+  </div>
+  <script src="https://blog-1252791686.cos.ap-beijing.myqcloud.com/js/global.js">
+  </script>
+  <script src="https://blog-1252791686.cos.ap-beijing.myqcloud.com/js/sohucs.js">
+  </script>
+ </body>
+</html>
