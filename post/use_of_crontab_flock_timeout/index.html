@@ -1,0 +1,324 @@
+<html>
+ <head>
+  <title>
+   crontab、flock、timeout的配合使用实现定时任务超时及报警
+  </title>
+  <meta content="crontab、flock、timeout的配合使用实现定时任务超时及报警,crontab,flock,timeout,Xiaoli Song,xiaolisong" name="keywords"/>
+  <meta content="Xiaoli Song,xiaolison" name="description"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
+  <link href="https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/global.css" rel="stylesheet" type="text/css"/>
+  <link href="https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/md.css" rel="stylesheet" type="text/css"/>
+  <link href="https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/article.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <div id="header">
+   <button id="switch_btn">
+   </button>
+   <a href="/about.html" title="关于">
+    <img alt="关于" src="https://blog-1252791686.cos.ap-beijing.myqcloud.com/icon/logo.png"/>
+   </a>
+   <h1>
+    Xiaoli Song
+   </h1>
+  </div>
+  <nav id="sidebar">
+   <div id="profile">
+    <a href="/" title="Xiaoli Song">
+     <img alt="Xiaoli Song" src="https://blog-1252791686.cosbj.myqcloud.com/icon/logo.png"/>
+    </a>
+    <span>
+     Xiaoli Song
+    </span>
+   </div>
+   <ul id="row_links">
+    <li>
+     <a href="/index.html">
+      <img alt="首页" src="https://blog-1252791686.cosbj.myqcloud.com/icon/home.png"/>
+      <span>
+       首页
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/archive.html">
+      <img alt="归档" src="https://blog-1252791686.cosbj.myqcloud.com/icon/archives.png"/>
+      <span>
+       归档
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/tag.html">
+      <img alt="标签" src="https://blog-1252791686.cosbj.myqcloud.com/icon/tags.png"/>
+      <span>
+       标签
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/works.html">
+      <img alt="作品" src="https://blog-1252791686.cosbj.myqcloud.com/icon/works.png"/>
+      <span>
+       作品
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/recommend.html">
+      <img alt="推荐" src="https://blog-1252791686.cosbj.myqcloud.com/icon/recommend.png"/>
+      <span>
+       推荐
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/about.html">
+      <img alt="关于" src="https://blog-1252791686.cosbj.myqcloud.com/icon/about.png"/>
+      <span>
+       关于
+      </span>
+     </a>
+    </li>
+    <li>
+     <a href="/friends.html">
+      <img alt="友链" src="https://blog-1252791686.cosbj.myqcloud.com/icon/friends.png"/>
+      <span>
+       友链
+      </span>
+     </a>
+    </li>
+   </ul>
+   <ul id="col_links">
+    <li>
+     <a href="https://github.com/XiaoliSong/">
+      <img alt="GitHub" src="https://blog-1252791686.cosbj.myqcloud.com/icon/github.png"/>
+     </a>
+    </li>
+    <li>
+     <a href="/search.html">
+      <img alt="Search" src="https://blog-1252791686.cosbj.myqcloud.com/icon/search.png"/>
+     </a>
+    </li>
+    <li>
+     <a href="/rss.xml">
+      <img alt="RSS" src="https://blog-1252791686.cosbj.myqcloud.com/icon/rss.png"/>
+     </a>
+    </li>
+   </ul>
+  </nav>
+  <div id="main">
+   <div class="md" id="content">
+    <article class="post">
+     <div class="post_meta">
+      <div class="post_meta_date">
+       2018-09-20
+      </div>
+      <div class="post_commet_cnt">
+       <a href="/post/use_of_crontab_flock_timeout/index.html#SOHUCS">
+        <span class="cy_cmt_count" id="sourceId::use_of_crontab_flock_timeout">
+        </span>
+        <span>
+         评论
+        </span>
+       </a>
+      </div>
+     </div>
+     <h1>
+      <a href="/post/use_of_crontab_flock_timeout/index.html" title="crontab、flock、timeout的配合使用实现定时任务超时及报警">
+       crontab、flock、timeout的配合使用实现定时任务超时及报警
+      </a>
+     </h1>
+     <div class="toc">
+      <ul>
+       <li>
+        <a href="#_1">
+         需求场景
+        </a>
+       </li>
+       <li>
+        <a href="#crontabflocktimeout">
+         crontab、flock、timeout的使用介绍
+        </a>
+        <ul>
+         <li>
+          <a href="#crontab">
+           crontab的使用
+          </a>
+         </li>
+         <li>
+          <a href="#flock">
+           flock的使用
+          </a>
+         </li>
+         <li>
+          <a href="#timeout">
+           timeout的使用
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li>
+        <a href="#_2">
+         配合使用例子
+        </a>
+        <ul>
+         <li>
+          <a href="#_3">
+           需要注意的点
+          </a>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <h2 id="_1">
+      需求场景
+     </h2>
+     <p>
+      开发后台的同学，经常需要写一些脚本定时启动运行，通常使用crontab来实现。有时候还有更加苛刻的需求：脚本不仅需要定时启动，而且还需要保证互斥
+（同一时间只有一个进程在跑，上次的没结束则这次不启动）的要求，甚至还需要设置超时时间（当运行时间过长自动结束进程）和超时报警。那又该如何实现呢？答案是：crontab定时启动任务，flock保证互斥，timeout设置超时以及报警脚本
+     </p>
+     <h2 id="crontabflocktimeout">
+      crontab、flock、timeout的使用介绍
+     </h2>
+     <h3 id="crontab">
+      crontab的使用
+     </h3>
+     <p>
+      crontab是Linux自带的实现定时任务程序，只能实现分钟级的定时任务。具体参考
+      <a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html">
+       crontab 定时任务
+      </a>
+     </p>
+     <p>
+      需要注意的点：
+     </p>
+     <ul>
+      <li>
+       实现每8分钟启动一次任务的实际执行情况是，从整点的0分钟开始每隔8分钟执行一次，所以56分钟时会执行一次且下次0分钟又会执行，其他小时、日应该也是类似。
+      </li>
+      <li>
+       脚本的路径应该使用绝对路径或者使用cd命令到绝对路径
+      </li>
+     </ul>
+     <h3 id="flock">
+      flock的使用
+     </h3>
+     <p>
+      flock可以保证只有一个脚本单例执行。主要用的是互斥非阻塞模式，设置等待时间也有一定的用处，但我用的较少。
+     </p>
+     <p>
+      参考
+      <a href="https://blog.csdn.net/tenfyguo/article/details/51012527">
+       使用flock命令确保脚本单例执行
+      </a>
+     </p>
+     <p>
+      需要注意的点：
+     </p>
+     <ul>
+      <li>
+       flock的互斥文件最好使用绝对路径且以.lock结尾
+      </li>
+      <li>
+       使用flock之后会生成相应的文件，后面命令完成结束之后并不会自动清除掉
+      </li>
+     </ul>
+     <h3 id="timeout">
+      timeout的使用
+     </h3>
+     <p>
+      参考
+      <a href="https://linux.die.net/man/1/timeout">
+       timeout(1)-Linux man page
+      </a>
+     </p>
+     <p>
+      使用例子
+     </p>
+     <div class="codehilite">
+      <pre><span></span><span class="c1"># 超时发送-9信号，超时执行后面的脚本输出failed</span>
+timeout -s <span class="m">9</span> <span class="m">5</span> sleep <span class="m">20</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s1">'failed'</span>
+<span class="c1"># 未超时执行后面的脚本输出success</span>
+timeout -s <span class="m">9</span> <span class="m">10</span> sleep <span class="m">5</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s1">'success'</span>
+</pre>
+     </div>
+     <p>
+      需要注意的点
+      <em>
+       timeout 正常结束的返回码是0
+      </em>
+      timeout 超时kill结束的返回码是124
+     </p>
+     <h2 id="_2">
+      配合使用例子
+     </h2>
+     <p>
+      首先定时执行的脚本task.sh如下：
+     </p>
+     <div class="codehilite">
+      <pre><span></span><span class="nb">echo</span> <span class="s1">'start at：'</span> <span class="sb">`</span>date<span class="sb">`</span>
+<span class="c1"># 大概3分钟</span>
+sleep <span class="m">180</span>
+<span class="nb">echo</span> <span class="s1">'end at：'</span> <span class="sb">`</span>date<span class="sb">`</span>
+</pre>
+     </div>
+     <p>
+      其次是超时报警通知脚本alarm.sh如下：
+     </p>
+     <div class="codehilite">
+      <pre><span></span># 追加输出超时时间到alarm.log
+echo 'timeout at：' `date` &gt;&gt;alarm.log
+# 其他的报警措施，发邮件、短信....
+</pre>
+     </div>
+     <p>
+      由于上面的定时任务大概3分钟结束，所以我们的超时时间大于3分钟就行了（具体多少根据不同情况设置就行了），假设6分钟执行一次且互斥非阻塞，超时10分钟且超时执行报警脚本，则最终crontab文件如下
+     </p>
+     <div class="codehilite">
+      <pre><span></span>*/6 * * * * cd /data/projec &amp;&amp; flock -xn ./task.lock -c 'timeout -9 600 sh task.sh || sh alarm.sh'
+</pre>
+     </div>
+     <h3 id="_3">
+      需要注意的点
+     </h3>
+     <p>
+      如果task.sh启动了子进程进行处理，则需要在task.sh的末尾加上wait命令等待全部子进程完成才结束，否则timeout无效
+     </p>
+     <div class="codehilite">
+      <pre><span></span><span class="nb">cd</span> /data/project
+nohub python3 main.py &gt;main.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
+<span class="nb">wait</span>
+</pre>
+     </div>
+    </article>
+    <div class="post_end">
+     <br/>
+     --END--
+     <br/>
+     <div class="post_tags">
+      标签：
+      <a href="/tag.html?tag=Linux" title="Linux">
+       #Linux
+      </a>
+     </div>
+    </div>
+    <div id="SOHUCS" sid="use_of_crontab_flock_timeout">
+    </div>
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytyIIWkH">
+    </script>
+   </div>
+   <footer>
+    Xiaoli Song -
+    <a href="http://xiaolisong.cn" title="Xiaoli Song">
+     xiaolisong.cn
+    </a>
+   </footer>
+  </div>
+  <script src="https://blog-1252791686.cos.ap-beijing.myqcloud.com/js/global.js">
+  </script>
+  <script src="https://blog-1252791686.cos.ap-beijing.myqcloud.com/js/sohucs.js">
+  </script>
+ </body>
+</html>

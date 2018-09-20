@@ -14,9 +14,32 @@
    zh-cn
   </language>
   <lastbuilddate>
-   2018-09-08 15:57:31
+   2018-09-20 23:50:41
   </lastbuilddate>
  </channel>
+ <item>
+  <title>
+   crontab、flock、timeout的配合使用实现定时任务超时及报警
+  </title>
+  <link/>
+  /post/use_of_crontab_flock_timeout/index.html
+  <description>
+   <h2 id="_1">
+    需求场景
+   </h2>
+   <p>
+    开发后台的同学，经常需要写一些脚本定时启动运行，通常使用crontab来实现。有时候还有更加苛刻的需求：脚本不仅需要定时启动，而且还需要保证互斥
+（同一时间只有一个进程在跑，上次的没结束则这次不启动）的要求，甚至还需要设置超时时间（当运行时间过长自动结束进程）和超时报警。那又该如何实现呢？答案是：crontab定时启动任务，flock保证互斥，timeout设置超时以及报警脚本
+   </p>
+  </description>
+  <pubdate>
+   2018-09-20 23:50:00
+  </pubdate>
+  <guid>
+   <link/>
+   /post/use_of_crontab_flock_timeout/index.html
+  </guid>
+ </item>
  <item>
   <title>
    Python不同项目加载公共模块
