@@ -115,6 +115,36 @@
       <article class="post">
        <div class="post_meta">
         <div class="post_meta_date">
+         2018-09-20
+        </div>
+        <div class="post_commet_cnt">
+         <a href="/post/use_of_crontab_flock_timeout/index.html#SOHUCS">
+          <span class="cy_cmt_count" id="sourceId::use_of_crontab_flock_timeout">
+          </span>
+          <span>
+           评论
+          </span>
+         </a>
+        </div>
+       </div>
+       <h1>
+        <a href="/post/use_of_crontab_flock_timeout/index.html" title="crontab、flock、timeout的配合使用实现定时任务超时及报警">
+         crontab、flock、timeout的配合使用实现定时任务超时及报警
+        </a>
+       </h1>
+       <h2 id="_1">
+        需求场景
+       </h2>
+       <p>
+        开发后台的同学，经常需要写一些脚本定时启动运行，通常使用crontab来实现。有时候还有更加苛刻的需求：脚本不仅需要定时启动，而且还需要保证互斥
+（同一时间只有一个进程在跑，上次的没结束则这次不启动）的要求，甚至还需要设置超时时间（当运行时间过长自动结束进程）和超时报警。那又该如何实现呢？答案是：crontab定时启动任务，flock保证互斥，timeout设置超时以及报警脚本
+       </p>
+      </article>
+     </li>
+     <li>
+      <article class="post">
+       <div class="post_meta">
+        <div class="post_meta_date">
          2018-09-08
         </div>
         <div class="post_commet_cnt">
