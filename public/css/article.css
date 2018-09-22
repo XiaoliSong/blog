@@ -7,26 +7,28 @@ article.post div.post_meta {
   float: right;
   text-align: right;
   width: 100px;
-  height: 50px;
+  margin: 0;
+  height: 40px;
 }
 article.post div.post_meta .post_meta_date {
+  margin: 0;
   color: #555;
 }
 article.post div.post_meta .post_comment_cnt {
+  margin: 0;
   color: #999;
 }
 article.post h1 {
-  margin-bottom: 10px;
+  min-height: 40px;
   margin-right: 100px;
-}
-article.post h1 a {
-  font-size: 1.48em;
 }
 article.post div.toc {
   position: relative;
   float: right;
   width: auto;
+  margin: 10px;
   border: 1px solid #DDD;
+  padding: 5px;
 }
 article.post div.toc::before {
   content: "文章目录";
@@ -41,6 +43,7 @@ article.post div.post_end {
   }
   article.post h1 {
     margin-right: 0;
+    min-height: 0;
   }
   article.post div.toc {
     display: none;

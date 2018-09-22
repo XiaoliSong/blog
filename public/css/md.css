@@ -23,8 +23,7 @@
   src: local('Vollkorn Bold'), local('Vollkorn-Bold'), url(https://fonts.gstatic.com/s/vollkorn/v8/0yb6GDoxxrvAnPhYGxGSTVg5jBA.ttf) format('truetype');
 }
 .md * {
-  padding: 3px 0;
-  color: #444;
+  margin: 0.3em 0;
 }
 .md pre {
   background: #f8f8f8;
@@ -56,31 +55,43 @@
   /**/
   /*滚动条的基本颜色*/
 }
+.md p,
+.md span {
+  line-height: 1.5em;
+}
 .md a {
   color: #4183c4;
   text-decoration: none;
+  font-size: inherit;
 }
 .md a:hover {
   color: blueviolet;
   cursor: pointer;
 }
 .md h1 {
-  font-size: 1.45em;
+  font-size: 1.7em;
+}
+.md h2,
+.md h3,
+.md h4,
+.md h5,
+.md h6 {
+  margin: 0.5em 0;
 }
 .md h2 {
-  font-size: 1.4em;
+  font-size: 1.5em;
 }
 .md h3 {
-  font-size: 1.32em;
+  font-size: 1.35em;
 }
 .md h4 {
-  font-size: 1.24em;
+  font-size: 1.2em;
 }
 .md h5 {
-  font-size: 1.16em;
+  font-size: 1.1em;
 }
 .md h6 {
-  font-size: 1.08em;
+  font-size: 1em;
 }
 .md ul {
   list-style: disc;
