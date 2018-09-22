@@ -1,10 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Vollkorn:400,400italic,700,700italic&subset=latin);
 
 .md {
-	*{
-        padding: 3px 0;
-        color: #444;
+    * {
+        margin: 0.3em 0;
     }
+
     pre{
         background:#f8f8f8;
         padding:10px 8px;
@@ -20,9 +20,13 @@
         scrollbar-base-color:#f8f8f8; /**//*滚动条的基本颜色*/ 
     }
 
+    p, span{
+        line-height: 1.5em;
+    }
     a{
         color: #4183c4;
         text-decoration: none;
+        font-size: inherit;
 
         &:hover{
             color: blueviolet;
@@ -31,22 +35,25 @@
     }
 
     h1{
-        font-size:1.45em;
+        font-size:1.7em;
+    }
+    h2,h3,h4,h5,h6{
+        margin: 0.5em 0;
     }
     h2{
-        font-size:1.40em;
+        font-size:1.5em;
     }
     h3{
-        font-size:1.32em;
+        font-size:1.35em;
     }
     h4{
-        font-size:1.24em;
+        font-size:1.2em;
     }
     h5{
-        font-size:1.16em;
+        font-size:1.1em;
     }
     h6{
-        font-size:1.08em;
+        font-size:1em;
     }
 
     ul{
