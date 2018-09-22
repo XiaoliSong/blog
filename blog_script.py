@@ -32,9 +32,17 @@ def exec_rss():
 def exec_sitemap():
     os.system(SCRIPT_PREFIX + 'sitemap.py')
 
+def exec_incremental_posts():
+    os.system(SCRIPT_PREFIX + 'posts.py')
+    os.system(SCRIPT_PREFIX + 'post_json.py')
+    exec_archive()
+    exec_tag()
+    exec_page()
+    exec_rss()
+    exec_sitemap()
 
 def exec_all_posts():
-    os.system(SCRIPT_PREFIX + 'posts.py')
+    os.system(SCRIPT_PREFIX + 'posts.py -all')
     os.system(SCRIPT_PREFIX + 'post_json.py')
     exec_archive()
     exec_tag()
@@ -54,7 +62,10 @@ if __name__ == "__main__":
         if sys.argv[1] == 'recommend':
             exec_recomend()
         elif sys.argv[1] == 'post':
-            exec_all_posts()
+            if len(sys.argv) >= 3 and sys.argv[2] == '-all':
+                exec_all_posts()
+            else:
+                exec_incremental_posts()
         elif sys.argv[1] == 'general':
             exec_general_pages()
         else:

@@ -25,16 +25,16 @@ def generate_post_end(tags):
 def generate_post_meta(date, id):
     post_meta_date = Html.generate_element_by_str(
         'div', date, class_name='post_meta_date')
-    post_commet_cnt_a_span1 = Html.generate_element_by_str(
+    post_comment_cnt_a_span1 = Html.generate_element_by_str(
         'span', id="sourceId::" + id, class_name="cy_cmt_count")
-    post_commet_cnt_a_span2 = Html.generate_element_by_str('span', ' 评论')
-    post_commet_cnt_a = Html.generate_element_by_strs(
-        'a', [post_commet_cnt_a_span1, post_commet_cnt_a_span2],
+    post_comment_cnt_a_span2 = Html.generate_element_by_str('span', ' 评论')
+    post_comment_cnt_a = Html.generate_element_by_strs(
+        'a', [post_comment_cnt_a_span1, post_comment_cnt_a_span2],
         href=const.POST_URL_PREFIX + id + '/index.html#SOHUCS')
-    post_commet_cnt = Html.generate_element_by_str(
-        'div', post_commet_cnt_a, class_name='post_commet_cnt')
+    post_comment_cnt = Html.generate_element_by_str(
+        'div', post_comment_cnt_a, class_name='post_comment_cnt')
     return Html.generate_element_by_strs(
-        'div', [post_meta_date, post_commet_cnt], class_name='post_meta')
+        'div', [post_meta_date, post_comment_cnt], class_name='post_meta')
 
 
 def generate_post_article(title, date, id, text):
