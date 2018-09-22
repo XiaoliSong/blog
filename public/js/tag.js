@@ -46,8 +46,7 @@
         let btn=filter_nodes(nodes[i].childNodes,'BUTTON')[0];
         btn.addEventListener('click',switch_tag_func(i));
 		if(param_tag!=null){
-			btn_tag=btn.innerHTML.substr(0,btn.innerHTML.indexOf('('));
-			console.log(btn_tag)
+			btn_tag=btn.innerHTML.substr(0,btn.innerHTML.indexOf('(')).replace(/\s+/g,"");
 			if(param_tag==btn_tag){
 				btn.click();
 			}
