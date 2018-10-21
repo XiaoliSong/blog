@@ -2,7 +2,7 @@
 import os
 import sys
 
-SCRIPT_PREFIX = 'python ./python/'
+SCRIPT_PREFIX = 'python3 ./python/'
 
 
 def exec_recomend():
