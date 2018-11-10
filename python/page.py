@@ -57,9 +57,8 @@ def generate_page_file(post_arr, index, has_former, has_next):
         post_catlog = Html.generate_element_by_strs(
             'ul', post_li_arr, class_name='post_catlog')
 
-    sohucs_script = util.get_sohucs_comment_cnt_js()
     pagination = generate_page_pagination(index, has_former, has_next)
-    main_html = ' '.join([post_catlog, sohucs_script, pagination])
+    main_html = ' '.join([post_catlog, pagination])
 
     page_conf = {
         "start_css_arr": [

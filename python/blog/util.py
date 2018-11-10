@@ -33,11 +33,24 @@ def get_post_date(post_id):
 def datetime2date(datetime):
     return datetime[0: datetime.index(' ')]
 
-
-def get_sohucs_comment_cnt_js():
-    return Html.generate_element_by_str(
-        'script',
-        id="cy_cmt_num",
-        src=
-        "https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytyIIWkH"
-    )
+def get_git_talk_html():
+    if not const.GIT_TALK_ENABLED:
+        return ''
+    
+    return '''
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script>
+        const gitalk = new Gitalk({
+        clientID: '%s',
+        clientSecret: '%s',
+        repo: '%s',
+        owner: '%s',
+        admin: %s,
+        id: location.pathname.substring(0,50),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+        gitalk.render('gitalk-container')
+    </script>
+    ''' %(const.GIT_TALK_CLIENT_ID, const.GIT_TALK_CLIENT_SECRET, const.GIT_TALK_REPO, const.GIT_TALK_OWNER, const.GIT_TALK_ADMIN)

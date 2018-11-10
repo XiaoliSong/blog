@@ -28,3 +28,10 @@ GENERAL_PAGES_DIR_PATH = path.abspath(path.join(PUBLIC_PATH, 'general_pages'))
 SPECAIL_PAGES_DIR_PATH = path.abspath(path.join(PUBLIC_PATH, 'special_pages'))
 
 POST_CNT_PER_PAGE = 10
+
+GIT_TALK_ENABLED = 1
+GIT_TALK_CLIENT_ID = 'a5d425df08c92b74a417'
+GIT_TALK_CLIENT_SECRET = '2c0840d0cb71a72d3ce8094d55094e5c260ffc15'
+GIT_TALK_REPO = 'XiaoliSong.github.io.git_talk'
+GIT_TALK_OWNER = 'XiaoliSong'
+GIT_TALK_ADMIN = ['XiaoliSong']
