@@ -1,9 +1,12 @@
 # /usr/bin/python3
 import os
 import sys
+import platform
 
-SCRIPT_PREFIX = 'python3 ./python/'
-
+if(platform.system() =="Windows"):
+    SCRIPT_PREFIX = 'python ./python/'
+else:
+    SCRIPT_PREFIX = 'python3 ./python/'
 
 def exec_recomend():
     os.system(SCRIPT_PREFIX + 'special_pages/recommend.py')
