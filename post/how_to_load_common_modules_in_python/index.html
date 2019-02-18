@@ -112,7 +112,7 @@
     <article class="post">
      <div class="post_meta">
       <div class="post_meta_date">
-       2018-11-10
+       2019-02-18
       </div>
      </div>
      <h1>
@@ -190,78 +190,78 @@
       backend和cms的load_common加载脚本
      </p>
      <div class="codehilite">
-      <pre><span></span><span class="s s-Atom">'''</span>
-<span class="s s-Atom">当前文件所在路径./backend/util/load_common.py</span>
-<span class="s s-Atom">或者./cms/util/load_common.py</span>
-<span class="s s-Atom">'''</span>
+      <pre><span></span><span class="sd">'''</span>
+<span class="sd">当前文件所在路径./backend/util/load_common.py</span>
+<span class="sd">或者./cms/util/load_common.py</span>
+<span class="sd">'''</span>
 
-<span class="s s-Atom">import</span> <span class="s s-Atom">sys</span>
-<span class="s s-Atom">import</span> <span class="s s-Atom">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 <span class="c1"># 公共项目的绝对路径</span>
-<span class="nv">COMMON_PROJECT_PATH</span> <span class="o">=</span> <span class="s s-Atom">os</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s s-Atom">os</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="k">__</span><span class="s s-Atom">file__</span><span class="p">),</span> <span class="s s-Atom">'../../common'</span><span class="p">)</span>
+<span class="n">COMMON_PROJECT_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">'../../common'</span><span class="p">)</span>
 
 <span class="c1"># 公共模块的依赖模块，如果依赖的包没有在公共模块的包出现，可以不添加</span>
-<span class="s s-Atom">dependent_modules</span> <span class="o">=</span> <span class="p">[</span><span class="s s-Atom">'const.app'</span><span class="p">]</span>
+<span class="n">dependent_modules</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'const.app'</span><span class="p">]</span>
 
 <span class="c1"># 公共模块，应该具体到文件模块，而不是包，如需要引入const.redis不能填util</span>
-<span class="s s-Atom">common_modules</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s s-Atom">'const.redis'</span><span class="p">,</span>
-    <span class="s s-Atom">'const.db'</span><span class="p">,</span>
+<span class="n">common_modules</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'const.redis'</span><span class="p">,</span>
+    <span class="s1">'const.db'</span><span class="p">,</span>
 <span class="p">]</span>
 
 
-<span class="s s-Atom">def</span> <span class="nf">delete_package</span><span class="p">(</span><span class="s s-Atom">module_name</span><span class="p">)</span><span class="s s-Atom">:</span>
-    <span class="s s-Atom">'''删除模块以上的包</span>
-<span class="s s-Atom">    如module_name=util.const.redis，则从sys.modules删除util.const,util</span>
-<span class="s s-Atom">    '''</span>
-    <span class="s s-Atom">parent_packages</span> <span class="o">=</span> <span class="s s-Atom">module_name</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s s-Atom">'.'</span><span class="p">)[</span><span class="mi">0</span><span class="p">:-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="s s-Atom">while</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">parent_packages</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="s s-Atom">:</span>
-        <span class="s s-Atom">parent_package</span> <span class="o">=</span> <span class="s s-Atom">'.'</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s s-Atom">parent_packages</span><span class="p">)</span>
-        <span class="s s-Atom">if</span> <span class="s s-Atom">parent_package</span> <span class="s s-Atom">in</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="nn">modules</span><span class="p">:</span>
-            <span class="s s-Atom">del</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="s s-Atom">modules</span><span class="p">[</span><span class="s s-Atom">parent_package</span><span class="p">]</span>
-            <span class="s s-Atom">parent_packages</span> <span class="o">=</span> <span class="s s-Atom">parent_packages</span><span class="p">[</span><span class="mi">0</span><span class="p">:-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="nn">else</span><span class="p">:</span>
-            <span class="s s-Atom">break</span>
+<span class="k">def</span> <span class="nf">delete_package</span><span class="p">(</span><span class="n">module_name</span><span class="p">):</span>
+    <span class="sd">'''删除模块以上的包</span>
+<span class="sd">    如module_name=util.const.redis，则从sys.modules删除util.const,util</span>
+<span class="sd">    '''</span>
+    <span class="n">parent_packages</span> <span class="o">=</span> <span class="n">module_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">parent_packages</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">parent_package</span> <span class="o">=</span> <span class="s1">'.'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parent_packages</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">parent_package</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">parent_package</span><span class="p">]</span>
+            <span class="n">parent_packages</span> <span class="o">=</span> <span class="n">parent_packages</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
 
 
-<span class="s s-Atom">def</span> <span class="nf">load_module</span><span class="p">(</span><span class="s s-Atom">module_name</span><span class="p">)</span><span class="s s-Atom">:</span>
-    <span class="s s-Atom">'''引入模块</span>
-<span class="s s-Atom">    '''</span>
-    <span class="s s-Atom">import_str</span> <span class="o">=</span> <span class="s s-Atom">'__import__("'</span> <span class="o">+</span> <span class="s s-Atom">module_name</span> <span class="o">+</span> <span class="s s-Atom">'")'</span>
-    <span class="nf">eval</span><span class="p">(</span><span class="s s-Atom">import_str</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">load_module</span><span class="p">(</span><span class="n">module_name</span><span class="p">):</span>
+    <span class="sd">'''引入模块</span>
+<span class="sd">    '''</span>
+    <span class="n">import_str</span> <span class="o">=</span> <span class="s1">'__import__("'</span> <span class="o">+</span> <span class="n">module_name</span> <span class="o">+</span> <span class="s1">'")'</span>
+    <span class="nb">eval</span><span class="p">(</span><span class="n">import_str</span><span class="p">)</span>
 
 
 <span class="c1"># 先加载公共模块的依赖模块</span>
-<span class="s s-Atom">for</span> <span class="s s-Atom">dependent_module</span> <span class="s s-Atom">in</span> <span class="s s-Atom">dependent_modules:</span>
-    <span class="nf">load_module</span><span class="p">(</span><span class="s s-Atom">dependent_module</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">dependent_module</span> <span class="ow">in</span> <span class="n">dependent_modules</span><span class="p">:</span>
+    <span class="n">load_module</span><span class="p">(</span><span class="n">dependent_module</span><span class="p">)</span>
 
 <span class="c1"># 删除已经加载的公共模块及其上面的包</span>
-<span class="s s-Atom">for</span> <span class="s s-Atom">common_module</span> <span class="s s-Atom">in</span> <span class="s s-Atom">common_modules:</span>
-    <span class="s s-Atom">if</span> <span class="s s-Atom">common_module</span> <span class="s s-Atom">in</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="nn">modules</span><span class="p">:</span>
-        <span class="s s-Atom">del</span> <span class="s s-Atom">common_module</span>
-    <span class="nf">delete_package</span><span class="p">(</span><span class="s s-Atom">common_module</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">common_module</span> <span class="ow">in</span> <span class="n">common_modules</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">common_module</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">common_module</span>
+    <span class="n">delete_package</span><span class="p">(</span><span class="n">common_module</span><span class="p">)</span>
 
 <span class="c1"># 设置优先检索公共项目COMMON_PROJECT_PATH</span>
-<span class="s s-Atom">sys</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">COMMON_PROJECT_PATH</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">COMMON_PROJECT_PATH</span><span class="p">)</span>
 
 <span class="c1"># 导入公共模块common_modules</span>
-<span class="s s-Atom">for</span> <span class="s s-Atom">common_module</span> <span class="s s-Atom">in</span> <span class="s s-Atom">common_modules:</span>
-    <span class="nf">load_module</span><span class="p">(</span><span class="s s-Atom">common_module</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">common_module</span> <span class="ow">in</span> <span class="n">common_modules</span><span class="p">:</span>
+    <span class="n">load_module</span><span class="p">(</span><span class="n">common_module</span><span class="p">)</span>
 
 <span class="c1"># 恢复优先检索当前文件夹</span>
-<span class="s s-Atom">sys</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">.</span><span class="nf">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># 删除公共模块上面的包</span>
-<span class="s s-Atom">for</span> <span class="s s-Atom">common_module</span> <span class="s s-Atom">in</span> <span class="s s-Atom">common_modules:</span>
-    <span class="nf">delete_package</span><span class="p">(</span><span class="s s-Atom">common_module</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">common_module</span> <span class="ow">in</span> <span class="n">common_modules</span><span class="p">:</span>
+    <span class="n">delete_package</span><span class="p">(</span><span class="n">common_module</span><span class="p">)</span>
 
 <span class="c1"># 重新加载当前模块所在包，避免报错</span>
-<span class="s s-Atom">if</span> <span class="s s-Atom">'util'</span> <span class="s s-Atom">in</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="nn">modules</span><span class="p">:</span>
-    <span class="s s-Atom">del</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="s s-Atom">modules</span><span class="p">[</span><span class="s s-Atom">'util'</span><span class="p">]</span>
-    <span class="s s-Atom">import</span> <span class="s s-Atom">util</span>
-<span class="nn">else</span><span class="p">:</span>
-    <span class="s s-Atom">import</span> <span class="s s-Atom">util</span>
+<span class="k">if</span> <span class="s1">'util'</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+    <span class="k">del</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">'util'</span><span class="p">]</span>
+    <span class="kn">import</span> <span class="nn">util</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">util</span>
 </pre>
      </div>
      <h2 id="_4">
@@ -277,6 +277,12 @@
      <br/>
      --END--
      <br/>
+     <p>
+      发表时间：2019-02-18 14:05:51
+     </p>
+     <p>
+      最后修改：2019-02-18 17:57:35
+     </p>
      <div class="post_tags">
       标签：
       <a href="/tag.html?tag=Python" title="Python">

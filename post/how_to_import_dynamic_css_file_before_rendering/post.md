@@ -9,14 +9,14 @@
 
 所以我的方案场景代码是这样的：
 
-```
+```HTML
 <!DOCTYPE html>
 <html>
 <head>
     <link class="remoteCss" rel="stylesheet" type="text/css" tempHref="/css/global.css">
 </head>
 <body>
-    <div id="main">
+    <div id="main"></div>
 </body>
 </html>
 ```
@@ -27,7 +27,7 @@
 
 有人可能会说，可以直接这样就行了。
 
-```
+```HTML
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +45,7 @@
     </script>
 </head>
 <body>
-    <div id="main">
+    <div id="main"></div>
 </body>
 </html>
 ```
@@ -56,7 +56,7 @@
 
 首先，需要把js脚本放在head里面，保证渲染页面前先执行脚本。然后我们需要利用到css的import特性。
 
-```
+```HTML
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,7 +84,7 @@
     </script>
 </head>
 <body>
-    <div id="main">
+    <div id="main"></div>
 </body>
 </html>
 ```
