@@ -3,10 +3,11 @@ import os
 import sys
 import platform
 
-if(platform.system() =="Windows"):
+if (platform.system() == "Windows"):
     SCRIPT_PREFIX = 'python ./python/'
 else:
     SCRIPT_PREFIX = 'python3 ./python/'
+
 
 def exec_recomend():
     os.system(SCRIPT_PREFIX + 'special_pages/recommend.py')
@@ -35,6 +36,7 @@ def exec_rss():
 def exec_sitemap():
     os.system(SCRIPT_PREFIX + 'sitemap.py')
 
+
 def exec_incremental_posts():
     os.system(SCRIPT_PREFIX + 'posts.py')
     os.system(SCRIPT_PREFIX + 'post_json.py')
@@ -43,6 +45,7 @@ def exec_incremental_posts():
     exec_page()
     exec_rss()
     exec_sitemap()
+
 
 def exec_all_posts():
     os.system(SCRIPT_PREFIX + 'post_json.py')
@@ -54,12 +57,13 @@ def exec_all_posts():
     exec_sitemap()
 
 
-def exec_dir_posts(dir_name, post_name = None):
+def exec_dir_posts(dir_name, post_name=None):
     os.system(SCRIPT_PREFIX + 'post_json.py')
     if post_name is None:
         os.system(SCRIPT_PREFIX + 'dir_posts.py ' + dir_name)
     else:
-        os.system(SCRIPT_PREFIX + 'dir_posts.py '+ dir_name + ' ' + post_name)
+        os.system(SCRIPT_PREFIX + 'dir_posts.py ' + dir_name + ' ' + post_name)
+
 
 if __name__ == "__main__":
     if len(sys.argv) >= 2:

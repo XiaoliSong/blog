@@ -7,21 +7,21 @@ from blog.html import Html
 
 class Page:
     @classmethod
-    def __check_make_page_info(cls,page_info):
+    def __check_make_page_info(cls, page_info):
         if 'title' not in page_info:
-            page_info['title']=const.BLOG_NAME
+            page_info['title'] = const.BLOG_NAME
         if 'key_words' not in page_info:
-            page_info['key_words']=const.BLOG_NAME
+            page_info['key_words'] = const.BLOG_NAME
         if 'description' not in page_info:
-            page_info['description']=const.BLOG_DESCRIPTION
+            page_info['description'] = const.BLOG_DESCRIPTION
         if 'start_css_arr' not in page_info:
-            page_info['start_css_arr']=[]
+            page_info['start_css_arr'] = []
         if 'start_js_arr' not in page_info:
-            page_info['start_js_arr']=[]
+            page_info['start_js_arr'] = []
         if 'end_css_arr' not in page_info:
-            page_info['end_css_arr']=[]
+            page_info['end_css_arr'] = []
         if 'end_js_arr' not in page_info:
-            page_info['end_js_arr']=[]
+            page_info['end_js_arr'] = []
         return page_info
 
     @classmethod
@@ -82,12 +82,13 @@ class Page:
 
     @classmethod
     def generate_complete_html(cls, page_info, main_content=''):
-        page_info=cls.__check_make_page_info(page_info)
+        page_info = cls.__check_make_page_info(page_info)
 
         with open(const.GLOBAL_CONF_FILE_PATH, 'r', encoding='utf-8') as fd:
             global_conf = json.load(fd)
 
-        start_css_arr = global_conf['start_css_arr'] + page_info['start_css_arr']
+        start_css_arr = global_conf['start_css_arr'] + \
+            page_info['start_css_arr']
         start_js_arr = global_conf['start_js_arr'] + page_info['start_js_arr']
         end_css_arr = global_conf['end_css_arr'] + page_info['end_css_arr']
         end_js_arr = global_conf['end_js_arr'] + page_info['end_js_arr']

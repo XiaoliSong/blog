@@ -22,7 +22,8 @@ POST_PREFACE_FILE_PATH = 'preface.md'
 PAGE_PREFIX_PATH = path.abspath(path.join(PUBLIC_PATH, "page"))
 
 POST_JSON_FILE_PATH = path.abspath(path.join(PUBLIC_PATH, "post.json"))
-RECOMMEND_JSON_FILE_PATH = path.abspath(path.join(PUBLIC_PATH, "recommend.json"))
+RECOMMEND_JSON_FILE_PATH = path.abspath(
+    path.join(PUBLIC_PATH, "recommend.json"))
 
 GENERAL_PAGES_DIR_PATH = path.abspath(path.join(PUBLIC_PATH, 'general_pages'))
 SPECAIL_PAGES_DIR_PATH = path.abspath(path.join(PUBLIC_PATH, 'special_pages'))

@@ -4,17 +4,16 @@ if __name__ == "__main__":
     sys.path.append(
         os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
 
-import json
-import os
-import blog.util
-from blog.html import Html
-from blog import const
-from blog.page import Page
 import special_pages.util
+from blog.page import Page
+from blog import const
+from blog.html import Html
+import blog.util
+import os
+import json
 
 RECOMMEND_FILE_PATH_PREFIX = 'recommend'
 RECOMMEND_JSON_FILE_PATH = os.path.join(const.PUBLIC_PATH, 'recommend.json')
-
 
 
 def generate_recommend_page():
@@ -24,7 +23,8 @@ def generate_recommend_page():
 
     h1 = Html.generate_element_by_str('h1', '推荐')
     tag_ul = special_pages.util.generate_tag_ul(tag_info_arr)
-    tag_contents_ul = special_pages.util.generate_tag_contents_ul(tag_posts_arr)
+    tag_contents_ul = special_pages.util.generate_tag_contents_ul(
+        tag_posts_arr)
     main_content = ' '.join([h1, tag_ul, tag_contents_ul])
     conf_file_path = os.path.join(const.SPECAIL_PAGES_DIR_PATH,
                                   RECOMMEND_FILE_PATH_PREFIX + '.conf')

@@ -1,3 +1,5 @@
 Pygments
 markdown
 bs4
+yapf
+flake8

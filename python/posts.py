@@ -5,7 +5,7 @@ from blog.post import generate_post_file
 
 if __name__ == "__main__":
     if len(sys.argv) == 2:
-        if sys.argv[1]=='-all':
+        if sys.argv[1] == '-all':
             # 全部重新生成
             generate_all_posts_file()
         else:

@@ -32,10 +32,7 @@ def generate_archive_data():
             tag_posts[tag].append(post)
     tag_posts_arr = []
     for tag in tag_arr:
-        tag_posts_arr.append({
-            'name': tag, 
-            'posts': tag_posts[tag]
-        })
+        tag_posts_arr.append({'name': tag, 'posts': tag_posts[tag]})
     return tag_posts_arr
 
 

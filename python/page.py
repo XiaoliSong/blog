@@ -98,14 +98,13 @@ def generate_all_pages_file():
                     has_former = False
                 else:
                     has_former = True
-                right = left+ const.POST_CNT_PER_PAGE
+                right = left + const.POST_CNT_PER_PAGE
                 if (right < posts_cnt):
                     has_next = True
                 else:
                     has_next = False
-                generate_page_file(
-                    posts[left:right], index,
-                    has_former, has_next)
+                generate_page_file(posts[left:right], index, has_former,
+                                   has_next)
                 left += const.POST_CNT_PER_PAGE
                 index += 1
     print("生成 全部page导航页面 成功")

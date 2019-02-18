@@ -18,16 +18,22 @@ def generate_post_end(tags, create_datetime, update_datetime):
     post_tags = Html.generate_element_by_str(
         'div', '标签：' + tag_str, class_name='post_tags')
 
-    create_datetime_ele =  Html.generate_element_by_str(
+    create_datetime_ele = Html.generate_element_by_str(
         'p', '发表时间：' + create_datetime)
     if create_datetime == update_datetime:
         return Html.generate_element_by_str(
-            'div', '<br />--END--<br />' + create_datetime_ele + post_tags, class_name='post_end')
+            'div',
+            '<br />--END--<br />' + create_datetime_ele + post_tags,
+            class_name='post_end')
     else:
-        update_datetime_ele =  Html.generate_element_by_str(
+        update_datetime_ele = Html.generate_element_by_str(
             'p', '最后修改：' + update_datetime)
         return Html.generate_element_by_str(
-            'div', '<br />--END--<br />' + create_datetime_ele + update_datetime_ele + post_tags, class_name='post_end')
+            'div',
+            '<br />--END--<br />' + create_datetime_ele + update_datetime_ele +
+            post_tags,
+            class_name='post_end')
+
 
 def generate_post_meta(date, id):
     post_meta_date = Html.generate_element_by_str(
@@ -65,8 +71,10 @@ def generate_post(post_id):
         md_file_name = os.path.join(post_dir_name, const.POST_MD_FILE_PATH)
         with open(md_file_name, 'r', encoding='utf-8') as fd:
             text = Html.from_markdown_str(fd.read())
-            create_time, update_time = util.get_post_create_update_datetime(post_id)
-            main = generate_post_main(post_conf['title'], create_time, update_time, post_id, text,
+            create_time, update_time = util.get_post_create_update_datetime(
+                post_id)
+            main = generate_post_main(post_conf['title'], create_time,
+                                      update_time, post_id, text,
                                       post_conf['tags'])
             return Page.generate_complete_html(post_conf, main)
 
@@ -98,9 +106,9 @@ def generate_changed_posts_file():
     for dir_name in os.listdir(const.POST_DIR_PATH):
         post_dir = os.path.join(const.POST_DIR_PATH, dir_name)
         post_id = dir_name
-        if os.path.isdir(post_dir) and (post_id not in post_dict
-                                        or post_dict[post_id]['md5'] !=
-                                        util.get_post_md5(post_id)):
+        if os.path.isdir(post_dir) and (
+                post_id not in post_dict
+                or post_dict[post_id]['md5'] != util.get_post_md5(post_id)):
             generate_post_file(post_id)
             cnt += 1
     print("生成全部变化的帖子成功，共：" + str(cnt) + "个")

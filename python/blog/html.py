@@ -37,8 +37,7 @@ class Html:
     @classmethod
     def generate_element_by_strs(cls, tag_name, content_strs=[], **attr_dict):
         content_str = ' '.join(content_strs)
-        return cls.generate_element_by_str(
-            tag_name, content_str, **attr_dict)
+        return cls.generate_element_by_str(tag_name, content_str, **attr_dict)
 
     @classmethod
     def generate_sp_element(cls, tag_name, **attr_dict):
@@ -47,17 +46,16 @@ class Html:
         <%s%s />
         ''' % (tag_name, attr_str)
 
-    
     @classmethod
     def generate_css(cls, url):
-        return cls.generate_sp_element('link',rel="stylesheet", type="text/css", href=url)
+        return cls.generate_sp_element(
+            'link', rel="stylesheet", type="text/css", href=url)
 
     @classmethod
     def generate_js(cls, url):
-        return cls.generate_element_by_str('script','',src=url)
+        return cls.generate_element_by_str('script', '', src=url)
 
     @classmethod
     def prettify(cls, html_str):
         soup = BeautifulSoup(html_str, 'html.parser')
         return soup.prettify()
-        
