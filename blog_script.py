@@ -9,6 +9,22 @@ else:
     SCRIPT_PREFIX = 'python3 ./python/'
 
 
+def exec_help():
+    s = """用法：
+    post
+        新增或更新帖子
+        -all选项全部重新生成
+    recommend
+        更新推荐
+    general
+        更新general_pages的内容
+    dir
+        更新指定dir目录
+        post_id 更新指定dir目录的post_id
+    """
+    print(s)
+
+
 def exec_recomend():
     os.system(SCRIPT_PREFIX + 'special_pages/recommend.py')
 
@@ -76,6 +92,8 @@ if __name__ == "__main__":
                 exec_incremental_posts()
         elif sys.argv[1] == 'general':
             exec_general_pages()
+        elif sys.argv[1] in ['-h', '-help', '--help']:
+            exec_help()
         else:
             dir_name = sys.argv[1]
             if len(sys.argv) == 2:
@@ -85,3 +103,4 @@ if __name__ == "__main__":
                 exec_dir_posts(dir_name, post_name)
     else:
         print('参数个数不够')
+        exec_help()
