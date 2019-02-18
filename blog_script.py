@@ -45,8 +45,8 @@ def exec_incremental_posts():
     exec_sitemap()
 
 def exec_all_posts():
-    os.system(SCRIPT_PREFIX + 'posts.py -all')
     os.system(SCRIPT_PREFIX + 'post_json.py')
+    os.system(SCRIPT_PREFIX + 'posts.py -all')
     exec_archive()
     exec_tag()
     exec_page()
@@ -55,6 +55,7 @@ def exec_all_posts():
 
 
 def exec_dir_posts(dir_name, post_name = None):
+    os.system(SCRIPT_PREFIX + 'post_json.py')
     if post_name is None:
         os.system(SCRIPT_PREFIX + 'dir_posts.py ' + dir_name)
     else:

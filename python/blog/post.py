@@ -6,7 +6,7 @@ from blog import util
 from blog.page import Page
 
 
-def generate_post_end(tags):
+def generate_post_end(tags, create_datetime, update_datetime):
     tag_a_arr = []
     for tag in tags:
         a_href = '/tag.html?tag=' + tag
@@ -18,9 +18,16 @@ def generate_post_end(tags):
     post_tags = Html.generate_element_by_str(
         'div', '标签：' + tag_str, class_name='post_tags')
 
-    return Html.generate_element_by_str(
-        'div', '<br />--END--<br />' + post_tags, class_name='post_end')
-
+    create_datetime_ele =  Html.generate_element_by_str(
+        'p', '发表时间：' + create_datetime)
+    if create_datetime == update_datetime:
+        return Html.generate_element_by_str(
+            'div', '<br />--END--<br />' + create_datetime_ele + post_tags, class_name='post_end')
+    else:
+        update_datetime_ele =  Html.generate_element_by_str(
+            'p', '最后修改：' + update_datetime)
+        return Html.generate_element_by_str(
+            'div', '<br />--END--<br />' + create_datetime_ele + update_datetime_ele + post_tags, class_name='post_end')
 
 def generate_post_meta(date, id):
     post_meta_date = Html.generate_element_by_str(
@@ -41,9 +48,10 @@ def generate_post_article(title, date, id, text):
         'article', [post_meta, h1, text], class_name='post')
 
 
-def generate_post_main(title, date, id, text, tags):
+def generate_post_main(title, create_datetime, update_time, id, text, tags):
+    date = util.datetime2date(create_datetime)
     article = generate_post_article(title, date, id, text)
-    post_end = generate_post_end(tags)
+    post_end = generate_post_end(tags, create_datetime, update_time)
     git_talk = util.get_git_talk_html()
     main_arr = [article, post_end, git_talk]
     return ' '.join(main_arr)
@@ -57,8 +65,8 @@ def generate_post(post_id):
         md_file_name = os.path.join(post_dir_name, const.POST_MD_FILE_PATH)
         with open(md_file_name, 'r', encoding='utf-8') as fd:
             text = Html.from_markdown_str(fd.read())
-            date = util.get_post_date(post_id)
-            main = generate_post_main(post_conf['title'], date, post_id, text,
+            create_time, update_time = util.get_post_create_update_datetime(post_id)
+            main = generate_post_main(post_conf['title'], create_time, update_time, post_id, text,
                                       post_conf['tags'])
             return Page.generate_complete_html(post_conf, main)
 
@@ -85,14 +93,14 @@ def generate_all_posts_file():
 def generate_changed_posts_file():
     with open(const.POST_JSON_FILE_PATH, 'r', encoding='utf-8') as fd:
         posts = json.load(fd)['posts']
-    posts = {x['id']: x for x in posts}
+    post_dict = {x['id']: x for x in posts}
     cnt = 0
     for dir_name in os.listdir(const.POST_DIR_PATH):
         post_dir = os.path.join(const.POST_DIR_PATH, dir_name)
         post_id = dir_name
-        if os.path.isdir(post_dir) and (post_id not in posts
-                                        or posts[post_id]['datetime'] !=
-                                        util.get_post_datetime(post_id)):
+        if os.path.isdir(post_dir) and (post_id not in post_dict
+                                        or post_dict[post_id]['md5'] !=
+                                        util.get_post_md5(post_id)):
             generate_post_file(post_id)
             cnt += 1
     print("生成全部变化的帖子成功，共：" + str(cnt) + "个")

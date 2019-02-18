@@ -47,8 +47,8 @@ def generate_tag_contents_ul(tag_posts_arr):
         sub_li_arr=[]
         posts=tag_posts['posts']
         for post in posts:
-            if 'datetime' in post:
-                date = blog.util.datetime2date(post['datetime'])
+            if 'create_datetime' in post:
+                date = blog.util.datetime2date(post['create_datetime'])
                 span = Html.generate_element_by_str('span', date)
                 a_content = post['title'] + ' ' + span
             else:

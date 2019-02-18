@@ -11,7 +11,7 @@ PAGE_DIR_NAME = 'page'
 
 
 def generate_post_item(info):
-    date = util.datetime2date(info['datetime'])
+    date = util.datetime2date(info['create_datetime'])
     preface_file_name = os.path.join(const.POST_DIR_PATH, info['id'],
                                      const.POST_PREFACE_FILE_PATH)
     with open(preface_file_name, 'r', encoding='utf-8') as fd:

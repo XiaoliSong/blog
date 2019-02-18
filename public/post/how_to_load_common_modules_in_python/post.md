@@ -7,7 +7,7 @@
 分成三个项目，公共项目是其他两个项目的依赖，后两个项目导致加载模块时引入公共项目的模块。可以采用直接把文件复制过去，但略显麻烦，有没有更好的办法呢？
 
 ## 我的方案
-
+    
 下面介绍我的解决方案：
 
 ### 项目结构
@@ -21,7 +21,7 @@
 ### load_common加载脚本
 
 backend和cms的load_common加载脚本
-```
+```python
 '''
 当前文件所在路径./backend/util/load_common.py
 或者./cms/util/load_common.py

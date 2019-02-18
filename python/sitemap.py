@@ -62,7 +62,7 @@ def generate_sitemap():
     with open(const.POST_JSON_FILE_PATH, 'r', encoding='utf-8') as fd:
         posts = json.load(fd)['posts']
         for post in posts:
-            lastmod = post['datetime'][0:post['datetime'].index(' ')]
+            lastmod = post['update_datetime'][0:post['update_datetime'].index(' ')]
             loc = const.DOMAIN_ROOT_URL_PREFIX + post['link']
             changefreq = 'daily'
             priority = '0.9'

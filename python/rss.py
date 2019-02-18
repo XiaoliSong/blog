@@ -29,7 +29,7 @@ def generate_rss():
                                              const.POST_PREFACE_FILE_PATH)
         with open(description_file_name, 'r', encoding='utf-8') as fd:
             description = Html.from_markdown_str(fd.read())
-        pubDate = post['datetime']
+        pubDate = post['update_datetime']
         item_str += generate_rss_item(title, link, description, pubDate)
 
     title = Html.generate_element_by_str('title', const.BLOG_NAME)

@@ -22,7 +22,7 @@ def generate_archive_data():
     tag_arr = []
     tag_posts = {}
     for post in posts:
-        date = post['datetime'][0:post['datetime'].index(' ')]
+        date = post['create_datetime'][0:post['create_datetime'].index(' ')]
         tag = date[0:date.rfind('-')].replace('-', '年') + '月'
         if tag not in tag_arr:
             tag_arr.append(tag)
