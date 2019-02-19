@@ -53,12 +53,17 @@ def exec_sitemap():
     os.system(SCRIPT_PREFIX + 'sitemap.py')
 
 
+def exec_search():
+    os.system(SCRIPT_PREFIX + 'search_json.py')
+
+
 def exec_incremental_posts():
     os.system(SCRIPT_PREFIX + 'posts.py')
     os.system(SCRIPT_PREFIX + 'post_json.py')
     exec_archive()
     exec_tag()
     exec_page()
+    exec_search()
     exec_rss()
     exec_sitemap()
 
@@ -68,6 +73,7 @@ def exec_all_posts():
     os.system(SCRIPT_PREFIX + 'posts.py -all')
     exec_archive()
     exec_tag()
+    exec_search()
     exec_page()
     exec_rss()
     exec_sitemap()
