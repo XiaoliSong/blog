@@ -9,6 +9,7 @@
   <meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
   <link href="https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/global.css" rel="stylesheet" type="text/css"/>
   <link href="https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/md.css" rel="stylesheet" type="text/css"/>
+  <link href="https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/search.css" rel="stylesheet" type="text/css"/>
  </head>
  <body>
   <div id="header">
@@ -108,12 +109,17 @@
   </nav>
   <div id="main">
    <div class="md" id="content">
-    <h1 id="_1">
-     搜索
+    <h1>
+     站内搜索
     </h1>
-    <p>
-     暂未开通
-    </p>
+    <div id="search">
+     <form action="/search.html">
+      <input id="search_input" maxlength="80" name="key_word" placeholder="请输入关键字..." required="" type="search" value=""/>
+      <input class="submit" id="search_btn" type="submit" value="搜索"/>
+     </form>
+     <div id="search_result">
+     </div>
+    </div>
    </div>
    <footer>
     Xiaoli Song -
@@ -123,6 +129,8 @@
    </footer>
   </div>
   <script src="https://blog-1252791686.cos.ap-beijing.myqcloud.com/js/global.js">
+  </script>
+  <script src="https://blog-1252791686.cos.ap-beijing.myqcloud.com/js/search.js">
   </script>
  </body>
 </html>
