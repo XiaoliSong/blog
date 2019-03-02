@@ -1,7 +1,7 @@
 # 关于
 
 * 坐标北京
-* Email: <a href="mailto:li9612@qq.com">li9612@qq.com</a>
+* Email: <a href="mailto:sxl9612@qq.com">sxl9612@qq.com</a>
 
 <div id="gitalk-container"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
