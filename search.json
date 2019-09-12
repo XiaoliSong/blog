@@ -1,17 +1,17 @@
 {
-    "/post/how_to_import_dynamic_css_file_before_rendering/index.html":{
+    "https://xiaolisong.github.io/blog/post/how_to_import_dynamic_css_file_before_rendering/index.html":{
         "title":"\u5982\u4f55\u5728\u9875\u9762\u6e32\u67d3\u524d\u52a0\u5165\u52a8\u6001\u7684CSS\u7684\u6587\u4ef6",
         "tags":[
             "\u524d\u7aef"
         ]
     },
-    "/post/how_to_load_common_modules_in_python/index.html":{
+    "https://xiaolisong.github.io/blog/post/how_to_load_common_modules_in_python/index.html":{
         "title":"Python\u4e0d\u540c\u9879\u76ee\u52a0\u8f7d\u516c\u5171\u6a21\u5757",
         "tags":[
             "Python"
         ]
     },
-    "/post/use_of_crontab_flock_timeout/index.html":{
+    "https://xiaolisong.github.io/blog/post/use_of_crontab_flock_timeout/index.html":{
         "title":"crontab\u3001flock\u3001timeout\u7684\u914d\u5408\u4f7f\u7528\u5b9e\u73b0\u5b9a\u65f6\u4efb\u52a1\u8d85\u65f6\u53ca\u62a5\u8b66",
         "tags":[
             "Linux"
