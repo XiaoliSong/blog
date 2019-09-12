@@ -62,8 +62,8 @@ def generate_page_file(post_arr, index, has_former, has_next):
 
     page_conf = {
         "start_css_arr": [
-            "https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/article.css",
-            "https://blog-1252791686.cos.ap-beijing.myqcloud.com/css/page.css"
+            "https://xiaolisong.github.io/blog/css/article.css",
+            "https://xiaolisong.github.io/blog/css/page.css"
         ],
         "description":
         "导航页, 第%d页" % (index)

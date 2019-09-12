@@ -4,17 +4,17 @@
    Xiaoli Song
   </title>
   <link/>
-  https://www.xiaolisong.cn
+  https://xiaolisong.github.io
   <description>
-   Xiaoli Song,xiaolison
+   Xiaoli Song,xiaolisong,Song Xiaoli,songxiaoli
   </description>
-  <atom:link href="https://www.xiaolisong.cn/rss.xml" rel="self">
+  <atom:link href="https://xiaolisong.github.io/rss.xml" rel="self">
   </atom:link>
   <language>
    zh-cn
   </language>
   <lastbuilddate>
-   2019-02-19 13:15:52
+   2019-09-13 03:45:32
   </lastbuilddate>
  </channel>
  <item>
@@ -22,7 +22,7 @@
    如何在页面渲染前加入动态的CSS的文件
   </title>
   <link/>
-  /post/how_to_import_dynamic_css_file_before_rendering/index.html
+  https://xiaolisong.github.io/blog/post/how_to_import_dynamic_css_file_before_rendering/index.html
   <description>
    <h2 id="css">
     页面渲染前加入动态的CSS的文件？
@@ -58,11 +58,11 @@
    </p>
   </description>
   <pubdate>
-   2019-02-18 14:34:18
+   2019-09-13 03:45:30
   </pubdate>
   <guid>
    <link/>
-   /post/how_to_import_dynamic_css_file_before_rendering/index.html
+   https://xiaolisong.github.io/blog/post/how_to_import_dynamic_css_file_before_rendering/index.html
   </guid>
  </item>
  <item>
@@ -70,7 +70,7 @@
    Python不同项目加载公共模块
   </title>
   <link/>
-  /post/how_to_load_common_modules_in_python/index.html
+  https://xiaolisong.github.io/blog/post/how_to_load_common_modules_in_python/index.html
   <description>
    <h2 id="_1">
     需求场景
@@ -83,11 +83,11 @@
    </p>
   </description>
   <pubdate>
-   2019-02-18 17:57:35
+   2019-09-13 03:45:30
   </pubdate>
   <guid>
    <link/>
-   /post/how_to_load_common_modules_in_python/index.html
+   https://xiaolisong.github.io/blog/post/how_to_load_common_modules_in_python/index.html
   </guid>
  </item>
  <item>
@@ -95,7 +95,7 @@
    crontab、flock、timeout的配合使用实现定时任务超时及报警
   </title>
   <link/>
-  /post/use_of_crontab_flock_timeout/index.html
+  https://xiaolisong.github.io/blog/post/use_of_crontab_flock_timeout/index.html
   <description>
    <h2 id="_1">
     需求场景
@@ -106,11 +106,11 @@
    </p>
   </description>
   <pubdate>
-   2019-02-18 14:05:51
+   2019-09-13 03:45:30
   </pubdate>
   <guid>
    <link/>
-   /post/use_of_crontab_flock_timeout/index.html
+   https://xiaolisong.github.io/blog/post/use_of_crontab_flock_timeout/index.html
   </guid>
  </item>
 </rss>

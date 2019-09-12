@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.google.com/schemas/sitemap/0.9">
  <url>
   <loc>
-   https://www.xiaolisong.cn/40x.html
+   https://xiaolisong.github.io/40x.html
   </loc>
   <lastmod>
-   2019-02-16
+   2019-09-13
   </lastmod>
   <changefreq>
    hourly
@@ -16,10 +16,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/50x.html
+   https://xiaolisong.github.io/50x.html
   </loc>
   <lastmod>
-   2019-02-16
+   2019-09-13
   </lastmod>
   <changefreq>
    hourly
@@ -30,10 +30,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/about.html
+   https://xiaolisong.github.io/about.html
   </loc>
   <lastmod>
-   2019-02-16
+   2019-09-13
   </lastmod>
   <changefreq>
    hourly
@@ -44,10 +44,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/archive.html
+   https://xiaolisong.github.io/archive.html
   </loc>
   <lastmod>
-   2019-02-19
+   2019-09-13
   </lastmod>
   <changefreq>
    hourly
@@ -58,10 +58,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/friends.html
+   https://xiaolisong.github.io/friends.html
   </loc>
   <lastmod>
-   2019-02-16
+   2019-09-13
   </lastmod>
   <changefreq>
    hourly
@@ -72,10 +72,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/index.html
+   https://xiaolisong.github.io/index.html
   </loc>
   <lastmod>
-   2019-02-19
+   2019-09-13
   </lastmod>
   <changefreq>
    hourly
@@ -86,10 +86,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/recommend.html
+   https://xiaolisong.github.io/recommend.html
   </loc>
   <lastmod>
-   2019-02-16
+   2019-09-13
   </lastmod>
   <changefreq>
    hourly
@@ -100,10 +100,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/search.html
+   https://xiaolisong.github.io/search.html
   </loc>
   <lastmod>
-   2019-02-19
+   2019-09-13
   </lastmod>
   <changefreq>
    hourly
@@ -114,10 +114,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/tag.html
+   https://xiaolisong.github.io/tag.html
   </loc>
   <lastmod>
-   2019-02-19
+   2019-09-13
   </lastmod>
   <changefreq>
    hourly
@@ -128,10 +128,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/works.html
+   https://xiaolisong.github.io/works.html
   </loc>
   <lastmod>
-   2019-02-16
+   2019-09-13
   </lastmod>
   <changefreq>
    hourly
@@ -142,10 +142,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/page/0.html
+   https://xiaolisong.github.io/page/0.html
   </loc>
   <lastmod>
-   2019-02-19
+   2019-09-13
   </lastmod>
   <changefreq>
    hourly
@@ -156,10 +156,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/post/how_to_import_dynamic_css_file_before_rendering/index.html
+   https://xiaolisong.github.iohttps://xiaolisong.github.io/blog/post/how_to_import_dynamic_css_file_before_rendering/index.html
   </loc>
   <lastmod>
-   2019-02-18
+   2019-09-13
   </lastmod>
   <changefreq>
    daily
@@ -170,10 +170,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/post/how_to_load_common_modules_in_python/index.html
+   https://xiaolisong.github.iohttps://xiaolisong.github.io/blog/post/how_to_load_common_modules_in_python/index.html
   </loc>
   <lastmod>
-   2019-02-18
+   2019-09-13
   </lastmod>
   <changefreq>
    daily
@@ -184,10 +184,10 @@
  </url>
  <url>
   <loc>
-   https://www.xiaolisong.cn/post/use_of_crontab_flock_timeout/index.html
+   https://xiaolisong.github.iohttps://xiaolisong.github.io/blog/post/use_of_crontab_flock_timeout/index.html
   </loc>
   <lastmod>
-   2019-02-18
+   2019-09-13
   </lastmod>
   <changefreq>
    daily
